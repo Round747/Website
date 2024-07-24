@@ -1,0 +1,209 @@
+<!DOCTYPE HTML>
+<!--
+	Future Imperfect by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Liam Latz - Kat⁵ Chapter 2</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="/index.html">Liam Latz</a></h1>
+						<nav class="links">
+							<ul>
+								<li><a href="/about.html">About</a></li>
+								<li><a href="/works.html">Works</a></li>
+								<li><a href="/posts.html">Posts</a></li>
+								<li><a href="/contact.html">Contact</a></li>
+							</ul>
+						</nav>
+						<nav>
+							
+							<ul class="icons" >
+								<li><a href="https://www.instagram.com/liam_latz05/" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+								<li><a href="https://www.facebook.com/liam.latz.1" target="_blank" class="icon brands fa-facebook-f" style="font-size: 0.875em;"><span class="label">Facebook</span></a></li>												
+							</ul>
+							
+						</nav>
+					</header>
+
+					<header id="header2">
+						<nav class="links" style="border-left: 0;">
+							<ul>
+								<li><a href="/about.html">About</a></li>
+								<li><a href="/works.html">Works</a></li>
+								<li><a href="/posts.html">Posts</a></li>
+								<li><a href="/contact.html">Contact</a></li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2><a href="/Works/Kat5 ch2.html">Kat⁵ chapter 2</a></h2>
+										<p>part of <a href="/Kat5.html">Kat⁵ comic</a></p>
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2015-11-01">January 9, 2024</time>
+										
+									</div>
+								</header>
+
+								
+							<div id="flex-holder">
+								
+								<div class="pdf-toolbar">
+									<!-- <div style="height: 80px;"></div> -->
+									<div id="navL">
+										<div id="navigation_controls">
+											<button class="pdf-toolbar-button" id="previous"><-</button>
+											<div class="pdf-input button" id="current_page" value="1" type="number">1/--</div>
+											<button class="pdf-toolbar-button" id="next">-></button>
+										</div>
+									</div>
+									
+										
+										<div id="zoom_controls">
+											<button class="pdf-toolbar-button" id="zoom_out">−</button>
+											<button class="pdf-toolbar-button" id="zoom_in">+</button>
+											<a href="/Works/Kat5 ch1.html" class="pdf-toolbar-button button" style="margin-bottom: 1em; font-size: 0.55em;">|<<</a>
+											<a href="/Works/Kat5 ch3.html" class="pdf-toolbar-button button" style="font-size: 0.55em;">>>|</a>
+										</div>
+									
+
+								</div>
+
+								<div id="canvas-flex">
+									<div id="canvas_container">
+										<canvas id="pdf_renderer"></canvas>
+									</div>
+								</div>
+							</div>
+								
+							<div id="newnav"></div>
+							<div id="new_canvas"></div>
+								
+								</footer>
+							</article>
+
+					</div>
+
+				<!-- Footer -->
+				<section id="footer">
+					<ul class="icons">
+						<li><a href="https://www.instagram.com/liam_latz05/" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="https://www.facebook.com/liam.latz.1" target="_blank" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="/contact.html" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					<p class="copyright">&copy; Liam Latz 2024. Website Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Images: <a href="http://pixabay.com" target="_blank">Pixabay</a> & <a href="https://depositphotos.com" target="_blank">depositphotos</a>. </p>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/browser.min.js"></script>
+			<script src="/assets/js/breakpoints.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+			<script src="/assets/js/main.js"></script>
+
+			<script>
+
+
+				var defaultState = { 
+					pdf: null,
+					currentPage: 1,
+					zoom: 1
+				}
+				
+				pdfjsLib.getDocument("/PDFs/Comic chapter 2.pdf").then((pdf) => {
+					defaultState.pdf = pdf;
+					render();
+					document.getElementById("current_page").innerHTML = defaultState.currentPage  + "/" + defaultState.pdf._pdfInfo.numPages;
+				});
+
+				
+
+				document.getElementById('previous').addEventListener('click', (e) => {
+					if(defaultState.pdf == null || defaultState.currentPage == 1) return;
+					defaultState.currentPage -= 1;
+					document.getElementById("current_page").innerHTML = defaultState.currentPage  + "/" + defaultState.pdf._pdfInfo.numPages;
+					render();
+
+					// scrollTo(0,250);
+				});
+
+				document.getElementById('next').addEventListener('click', (e) => {
+					if(defaultState.pdf == null || defaultState.currentPage > defaultState.pdf._pdfInfo.numPages - 1) return;
+					defaultState.currentPage += 1;
+					document.getElementById("current_page").innerHTML = defaultState.currentPage + "/" + defaultState.pdf._pdfInfo.numPages;
+					render();
+					
+					// scrollTo(0,250);
+				});
+
+				document.getElementById('zoom_in').addEventListener('click', (e) => {
+					if(defaultState.pdf == null || defaultState.zoom >= 1.3) return;
+					defaultState.zoom += 0.35;
+					render();
+				});
+
+				document.getElementById('zoom_out').addEventListener('click', (e) => {
+					if(defaultState.pdf == null || defaultState.zoom <= 0.7) return;
+					defaultState.zoom -= 0.35;
+					render();
+				});
+
+				function render(){
+					defaultState.pdf.getPage(defaultState.currentPage).then((page) => {
+
+						var canvas = document.getElementById("pdf_renderer");
+						var ctx = canvas.getContext('2d');
+
+						var viewport = page.getViewport(defaultState.zoom);
+						var resolution = 3;
+
+						canvas.height = viewport.height * resolution;
+        				canvas.width  = viewport.width * resolution;
+
+						breakpoints.on('<=large', function() {
+							canvas.style.height = 100 + "%"; //showing size will be smaller size
+        				canvas.style.width = 100 + "%";
+						});
+
+						breakpoints.on('>large', function() {
+							canvas.style.height = viewport.height + "px"; //showing size will be smaller size
+        				canvas.style.width = viewport.width + "px";
+						});
+
+						var renderContext = {
+							canvasContext: ctx,
+							viewport: viewport,
+							transform: [resolution, 0, 0, resolution, 0, 0]
+        				};
+
+						page.render(renderContext);
+						 
+					});
+				}
+			</script>
+			
+
+	</body>
+</html>
