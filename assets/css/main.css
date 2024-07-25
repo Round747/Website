@@ -2504,6 +2504,11 @@ input, select, textarea {
 					margin: 0 0 1.5em 0;
 				}
 
+				.image.left, .image.right {
+					max-width: 70%;
+				}
+
+
 			}
 
 		.image.main {
