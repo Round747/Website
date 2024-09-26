@@ -7,7 +7,13 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-
+#video{
+	display: block;
+	margin: auto;
+	border: solid 1px rgba(160, 160, 160, 0.3);
+	box-shadow: 0 0 0 1px rgba(160, 160, 160, 0.3);
+	/* color: #3c3b3b !important; */
+}
 
 #contact li{
 	font-size: 1.3em;
@@ -256,6 +262,7 @@ input, select, textarea {
 	}
 
 	html {
+		--highlight-colour-: #9e2eba;
 		box-sizing: border-box;
 	}
 
@@ -347,11 +354,11 @@ input, select, textarea {
 
 		a:hover {
 			border-bottom-color: transparent;
-			color: #9e2eba !important;
+			color: var(--highlight-colour-) !important;
 		}
 
 			a:hover:before {
-				color: #9e2eba !important;
+				color: var(--highlight-colour-) !important;
 			}
 
 	strong, b {
@@ -2056,8 +2063,8 @@ input, select, textarea {
 		input[type="button"]:hover,
 		button:hover,
 		.button:hover {
-			box-shadow: inset 0 0 0 1px #9e2eba;
-			color: #9e2eba !important;
+			box-shadow: inset 0 0 0 1px var(--highlight-colour-);
+			color: var(--highlight-colour-) !important;
 		}
 
 			input[type="submit"]:hover:active,
@@ -2235,8 +2242,8 @@ input, select, textarea {
 		input[type="tel"]:focus,
 		select:focus,
 		textarea:focus {
-			border-color: #9e2eba;
-			box-shadow: inset 0 0 0 1px #9e2eba;
+			border-color: var(--highlight-colour-);
+			box-shadow: inset 0 0 0 1px var(--highlight-colour-);
 		}
 
 	.select-wrapper {
@@ -2377,8 +2384,8 @@ input, select, textarea {
 
 		input[type="checkbox"]:focus + label:before,
 		input[type="radio"]:focus + label:before {
-			border-color: #9e2eba;
-			box-shadow: 0 0 0 1px #9e2eba;
+			border-color: var(--highlight-colour-);
+			box-shadow: 0 0 0 1px var(--highlight-colour-);
 		}
 
 	input[type="radio"] + label:before {
@@ -2508,7 +2515,13 @@ input, select, textarea {
 					max-width: 70%;
 				}
 
+			}
 
+			@media screen and (min-width: 736px)
+			{
+				
+					
+				
 			}
 
 		.image.main {
@@ -2722,11 +2735,12 @@ input, select, textarea {
 				
 				ul.icons li{
 					font-size: 1.2em;
+					
 				}
 
 				@media screen and (min-width: 980px) {
 
-					ul.icons li{
+					#header ul.icons li{
 						font-size: 1.65em;
 					}
 				}
@@ -4011,7 +4025,7 @@ input, select, textarea {
 					}
 
 					#menu .links > li a:hover h3 {
-						color: #9e2eba;
+						color: var(--highlight-colour-);
 					}
 
 				#menu .links > li:first-child {
