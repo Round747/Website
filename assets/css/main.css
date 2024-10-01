@@ -7,6 +7,50 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
+x{
+	display: inline-block;
+	width: 1em;
+}
+
+.tooltip {
+	position: relative;
+	display: inline-block;
+	cursor: default;
+	color: #646464;
+	font-size: 0.85em;
+	
+  }
+  
+  .tooltip .tooltiptext {
+	visibility: hidden;
+	padding: 0.75em 0.75em;
+	/* background-color: black; */
+	color: #646464;
+	text-align: center;
+	/* border-radius: 0.em; */
+	white-space: nowrap;
+	border: solid 1px rgba(160, 160, 160, 0.3);
+	box-shadow: 0 0 0 0.25px rgba(160, 160, 160, 0.3);
+	font-family: "Source Sans Pro";
+	font-size: 1em;
+	text-transform:none;
+	font-weight: 400;
+	letter-spacing: -0.005em;
+	line-height: 1.3em;
+	
+	/* Position the tooltip */
+	position: absolute;
+	z-index: 1;
+	top: -90%;
+	right: 150%; 
+	transition-property: visibility;
+	transition-delay: 0.1s;
+  }
+  
+  .tooltip:hover .tooltiptext {
+	visibility: visible;
+	transition-delay: 0.3s;
+  }
 
 .oldenburg {
 	font-family: "Oldenburg", serif;
@@ -2946,6 +2990,8 @@ input, select, textarea {
 		position: relative;
 	}
 
+	
+
 		.post > header {
 			display: -moz-flex;
 			display: -webkit-flex;
@@ -2999,13 +3045,20 @@ input, select, textarea {
 					font-size: 0.7em;
 					font-weight: 800;
 					letter-spacing: 0.25em;
-					margin-top: 1.2em;
+					margin-top: 1em;
 					text-transform: uppercase;
 					white-space: nowrap;
 				}
 
 				.post > header .meta p{
-					margin-top: 1.6em;
+					margin-top: 0.9em;
+					display: inline-block;
+					margin-left: 1.5em;
+				}
+
+				.post > header .meta .tooltip{
+					margin-top: 0.9em;
+					margin-bottom: 1.5em;
 				}
 
 		.post > a.image.featured {
@@ -3123,6 +3176,7 @@ input, select, textarea {
 						text-align: left;
 						width: 100%;
 					}
+					
 
 						.post > header .meta > * {
 							border-left: solid 1px rgba(160, 160, 160, 0.3);
@@ -3155,6 +3209,16 @@ input, select, textarea {
 
 							.post > header .meta .author img {
 								width: 3.5em;
+							}
+
+							.post > header .meta p{
+								margin-top: 0em;
+								display: inline-block;
+								margin-left: 0;
+							}
+			
+							.post > header .meta .tooltip{
+								display: none;
 							}
 
 		}
