@@ -3259,16 +3259,28 @@ input, select, textarea {
 								margin-top: 0em;
 								display: inline-block;
 								margin-left: 0;
+								
+							}
+
+							.post > header .meta time{
+								margin-right: 1.6em;
 							}
 			
-							.tooltip{
+							.tooltip, .tooltipright{
+								/* display: none !important; */
+							}
+
+							.tooltiptext{
 								display: none;
 							}
+
+							
 
 		}
 
 		@media screen and (max-width: 736px) {
 
+			
 			.post {
 				padding: 1.5em 1.5em 0.1em 1.5em ;
 				left: -1.5em;
@@ -3290,7 +3302,9 @@ input, select, textarea {
 		}
 
 		@media screen and (max-width: 480px) {
-
+			.post > header .meta time{
+				margin-right: 0em;
+			}
 			.post > header .meta {
 				-moz-align-items: center;
 				-webkit-align-items: center;

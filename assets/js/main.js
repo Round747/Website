@@ -114,6 +114,21 @@
 				$pdf.prependTo($pdfL);
 			});
 
+			
+			const content = document.querySelectorAll('.tooltipmove');
+			
+			
+				breakpoints.on('<=large', function() {
+					
+					content.forEach(element => {
+						
+							element.parentNode.insertBefore(element.nextElementSibling, element);
+				});
+			});
+			
+			
+				
+
 			// //header2
 			// var $headerL = $('#headerL');
 			// var $header2 = $('#header2');
