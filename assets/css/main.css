@@ -16,7 +16,7 @@ x{
 	position: relative;
 	display: inline-block;
 	cursor: default;
-	color: #646464;
+	color: #acacac;
 	font-size: 0.85em;
 	
   }
@@ -38,11 +38,44 @@ x{
 	letter-spacing: -0.005em;
 	line-height: 1.3em;
 	
+	
+  }
+
+  .tooltipright{
+	margin-left: 1em;
+	font-size: 0.65em;
+	margin-top: 0;
+  }
+
+  .tooltip .tooltiptextleft{
+	position: absolute;
+	z-index: 1;
+	top: -80%;
+	right: 150%; 
+	transition-property: visibility;
+	transition-delay: 0.1s;
+  }
+
+  .tooltip .tooltiptextpost {
+	
+	font-size: 1.2em;
 	/* Position the tooltip */
 	position: absolute;
 	z-index: 1;
-	top: -90%;
-	right: 150%; 
+	top: -170%;
+	left: 150%; 
+	transition-property: visibility;
+	transition-delay: 0.1s;
+  }
+
+  .tooltip .tooltiptextminipost {
+	font-size: 1.2em;
+	
+	/* Position the tooltip */
+	position: absolute;
+	z-index: 1;
+	top: -10%;
+	left: 150%; 
 	transition-property: visibility;
 	transition-delay: 0.1s;
   }
@@ -51,6 +84,9 @@ x{
 	visibility: visible;
 	transition-delay: 0.3s;
   }
+
+  
+  
 
 .oldenburg {
 	font-family: "Oldenburg", serif;
@@ -2868,7 +2904,15 @@ input, select, textarea {
 				}
 
 				ul.posts article header > :last-child {
-					margin-bottom: 0;
+					margin-bottom: 0 ;
+				}
+
+				 .content-warning time{
+					 display: inline-block !important; 
+				}
+	  
+			  .content-warning h3{
+				  margin-bottom: 0;
 				}
 
 /* Mini Post */
@@ -4122,4 +4166,7 @@ input, select, textarea {
 
 		}
 
+		
+		
+		  
 		
