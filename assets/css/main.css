@@ -3267,11 +3267,16 @@ input, select, textarea {
 							}
 			
 							.tooltip, .tooltipright{
+								
 								/* display: none !important; */
 							}
 
 							.tooltiptext{
 								display: none;
+							}
+
+							.meta{
+								margin-bottom: 0.25em !important;
 							}
 
 							
