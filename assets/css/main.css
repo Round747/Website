@@ -3261,7 +3261,7 @@ input, select, textarea {
 								margin-left: 0;
 							}
 			
-							.post > header .meta .tooltip{
+							.tooltip{
 								display: none;
 							}
 
