@@ -64,10 +64,11 @@
 										
 									</div>
 								</header>
-								
-									<video src="/Videos/Alice in Purgatory intro.mp4" width="60%" controls id="video">video elements are not supported by your browser</video>
-
-								
+								<div id="video">
+								<div class="videocontainer4x3">
+								<iframe class="videoelement" src="https://www.youtube.com/embed/cPY6vgCSmM4?si=av1XklXG-8DEILfW&color=white&rel=0&showinfo=0"  title="YouTube video player" frameborder="0"   allow="accelerometer; autoplay; modestbranding; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+								</div>
+								</div>
 							
 								<hr>
 
@@ -108,6 +109,7 @@
 						breakpoints.on('>large', function() {
 							
         				video.style.width = 60 + "%";
+						// video.style.height = 10 + "%";
 						});
 			</script>
 
