@@ -18,7 +18,7 @@
 	src: url("../webfonts/Ransomnote-4y1W.ttf");
 }
 
-@media screen and (min-width: 1680px) {
+@media screen and (min-width: 1921px) {
 
 	.title-image{
 		width: 75%;
@@ -4155,7 +4155,7 @@ input, select, textarea {
 			padding-top: 0;
 		}
 
-		@media screen and (max-width: 1680px) {
+		@media screen and (max-width: 1920px) {
 
 			#sidebar {
 				border-top: solid 1px rgba(160, 160, 160, 0.3);
@@ -4165,8 +4165,14 @@ input, select, textarea {
 				width: 100%;
 				overflow-x: hidden;
 			}
+			
 
 		}
+
+		@media screen and (min-width: 1919px) {
+			#buffer{
+			padding-bottom: 320px;
+		}}
 
 /* Intro */
 
@@ -4213,7 +4219,7 @@ input, select, textarea {
 		text-align: center;
 	}
 
-	@media screen and (max-width: 1680px) {
+	@media screen and (max-width: 1919px) {
 
 		#intro {
 			margin: 0 0 3em 0;
