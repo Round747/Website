@@ -2,6 +2,154 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Raleway:400,800,900");
 @import url('https://fonts.googleapis.com/css2?family=Oldenburg&display=swap');
 
+
+@font-face {
+	font-family: Cutout-1;
+	src: url("../webfonts/MagazineLetterByBrntlbrnl-Regular.ttf");
+}
+
+@font-face {
+	font-family: Cutout-2;
+	src: url("../webfonts/Magazine-Cutouts-Font.ttf");
+}
+
+@font-face {
+	font-family: Cutout-3;
+	src: url("../webfonts/Ransomnote-4y1W.ttf");
+}
+
+@media screen and (min-width: 1680px) {
+
+	.title-image{
+		width: 75%;
+		justify-self: center;
+	}
+
+}
+
+.button.large.Font-3, .button.Font-3
+{
+	font-family: Cutout-3;
+	text-transform: none;
+	font-size: 0.75em;
+	padding-left: 2.5em;
+	padding-right: 2.5em;
+	
+}
+
+#title-card{
+	display: block;
+	margin-bottom: 10em;
+	justify-self:left;
+	background-color: white; 
+	box-shadow: 0px 0px 20px 20px white;
+	padding-top: 0.5em;
+	font-size: 1.2em;
+	padding-left: 1.4em;
+	padding-right: 1.4em;
+	margin-left: 3em;
+
+	/* background-image: url(/images/paper\ title.png);
+	background-size: cover;
+	padding: 4em;
+	padding-left: 3em;
+	padding-top: em;
+	padding-bottom: 1em; */
+}
+
+.Font-1{
+	font-family: Cutout-1;
+	text-transform: none;
+}
+
+.Font-2{
+	font-family: Cutout-2;
+	text-transform: none;
+}
+
+.Font-3{
+	font-family: Cutout-3;
+	text-transform: none;
+}
+
+.title-image{
+	position:absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	top: 50px;
+	box-shadow: 0px 0px 30px 20px white;
+	z-index: -5;
+}
+
+#Phone{
+	top: 70px;
+	display: none;
+}
+
+#buffer{
+	padding-bottom: 230px;
+}
+
+@media screen and (max-width: 720px) {
+	#Phone{
+		display: block;
+	}
+
+	#PC{
+		display: none;
+	}
+
+	#buffer{
+		padding-bottom: 260px;
+	}
+
+	#title-card{
+		width: 90%;
+		justify-self: center;
+		margin-left: 0;
+		margin-bottom: 2.5em !important ;
+		
+	}
+
+}
+
+@media screen and (max-width: 890px) {
+	#title-card{
+		font-size: 12pt;
+		margin-bottom: 2em !important ;
+	}
+	
+}
+
+/* @media screen and (max-width: 1080px) {
+	#title-card{
+		
+		 margin-bottom: 5em !important ; 
+	}
+	
+} */
+
+@media screen and (max-width: 320px) {
+	
+	#buffer{
+		padding-bottom: 230px;
+	}
+	#title-card{
+		font-size: 12pt;
+	}
+
+}
+
+#wrapper{
+	/* background-image: url("images/alice.png"); */
+	/* background-size:cover; */
+	/* background-color: green; */
+	/* display: none; */
+	/* z-index: -20; */
+}
+
+
+
 /*
 	Future Imperfect by HTML5 UP
 	html5up.net | @ajlkn
@@ -307,7 +455,14 @@ section, summary, time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;}
+	vertical-align: baseline;
+	
+}
+
+::selection{
+	background-color: #7e408e;
+	color: white;
+}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -375,7 +530,7 @@ input, select, textarea {
 	}
 
 	html {
-		--highlight-colour-: #9e2eba;
+		--highlight-colour-: #7e408e;
 		box-sizing: border-box;
 	}
 
@@ -384,6 +539,10 @@ input, select, textarea {
 	}
 
 	body {
+		/* background-image: url("/images/paper.webp");
+		
+		background-repeat:round; */
+		
 		background: #f4f4f4;
 	}
 
@@ -3009,31 +3168,29 @@ input, select, textarea {
 	.mini-posts {
 		margin: 0 0 2em 0;
 	}
+	
+	.mini-posts {
+		display: -moz-flex;
+		display: -webkit-flex;
+		display: -ms-flex;
+		display: flex;
+		-moz-flex-wrap: wrap;
+		-webkit-flex-wrap: wrap;
+		-ms-flex-wrap: wrap;
+		flex-wrap: wrap;
+		width: calc(100% + 2em);
+	}
 
-		@media screen and (max-width: 1680px) {
-
-			.mini-posts {
-				display: -moz-flex;
-				display: -webkit-flex;
-				display: -ms-flex;
-				display: flex;
-				-moz-flex-wrap: wrap;
-				-webkit-flex-wrap: wrap;
-				-ms-flex-wrap: wrap;
-				flex-wrap: wrap;
-				width: calc(100% + 2em);
-			}
-
-				.mini-posts > * {
-					margin: 2em 2em 0 0;
-					width: calc(50% - 2em);
-				}
-
-				.mini-posts > :nth-child(-n + 2) {
-					margin-top: 0;
-				}
-
+		.mini-posts > * {
+			margin: 2em 2em 0 0;
+			width: calc(50% - 2em);
 		}
+
+		.mini-posts > :nth-child(-n + 2) {
+			margin-top: 0;
+		}
+
+		
 
 		@media screen and (max-width: 480px) {
 
@@ -3930,6 +4087,7 @@ input, select, textarea {
 		opacity: 1;
 		padding: 4.5em;
 		width: 90em;
+		
 	}
 
 		body.is-menu-visible #wrapper {
@@ -3943,14 +4101,12 @@ input, select, textarea {
 			}
 
 		}
-
-		@media screen and (max-width: 1680px) {
-
-			#wrapper {
-				display: block;
-			}
-
+		
+		#wrapper {
+			display: block;
 		}
+
+		
 
 		@media screen and (max-width: 736px) {
 
@@ -3981,7 +4137,7 @@ input, select, textarea {
 	#sidebar {
 		margin-right: 3em;
 		min-width: 22em;
-		width: 22em;
+		width: 100%;
 	}
 
 		#sidebar > * {
