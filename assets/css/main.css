@@ -23,8 +23,9 @@
 	.title-image{
 		width: 75%;
 		justify-self: center;
+		left: 50%;
+		transform: translateX(-50%);
 	}
-
 }
 
 .button.large.Font-3, .button.Font-3
@@ -74,8 +75,6 @@
 
 .title-image{
 	position:absolute;
-	left: 50%;
-	transform: translateX(-50%);
 	top: 50px;
 	box-shadow: 0px 0px 30px 20px white;
 	z-index: -5;
@@ -108,6 +107,8 @@
 		justify-self: center;
 		margin-left: 0;
 		margin-bottom: 2.5em !important ;
+		left: 50%;
+		transform: translateX (-50%);
 		
 	}
 
@@ -118,6 +119,8 @@
 		font-size: 12pt;
 		margin-bottom: 2em !important ;
 	}
+
+	
 	
 }
 
@@ -4205,11 +4208,16 @@ input, select, textarea {
 		font-size: 0.8em;
 	}
 
+	#intro {
+		
+		text-align: center;
+	}
+
 	@media screen and (max-width: 1680px) {
 
 		#intro {
 			margin: 0 0 3em 0;
-			text-align: center;
+			
 		}
 
 			#intro header h2 {
