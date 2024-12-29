@@ -28,6 +28,8 @@
 	}
 }
 
+
+
 .button.large.Font-3, .button.Font-3
 {
 	font-family: Cutout-3;
@@ -89,7 +91,20 @@
 	padding-bottom: 230px;
 }
 
+.flex-image{
+	width: 31%;
+}
+
+
 @media screen and (max-width: 720px) {
+
+	.flex-image{
+		width: 48%;
+	}
+
+	#cut-image{
+		display: none;
+	}
 	#Phone{
 		display: block;
 	}
