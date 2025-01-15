@@ -57,7 +57,7 @@
 							<article class="post">
 								<header>
 									<div class="title">
-										<h2><a href="/Works/aifa-short-stories" class="Font-2">esPerAnZa</a></h2>
+										<h2><a href="/Works/esperanza" class="Font-2">esPerAnZa</a></h2>
 										<p>short video game set in <a href="/wardenbearers">the Wardenbearers</a> universe</p>
 									</div>
 									<div class="meta">
@@ -66,17 +66,22 @@
 									</div>
 								</header>
 								
-								<iframe style="display: block; margin: auto; margin-bottom: 3em; width: 100%;" frameborder="0" src="https://itch.io/embed/3206849?linkback=true" width="552" height="167"><a href="https://round747.itch.io/esperanza">Esperanza by Liam Latz</a></iframe>
-								<div style="display: flex; justify-content: space-between; ">
-								<img src="/images/game-1.png" alt="" class="flex-image">
-								<img src="/images/game-2.png" alt="" class="flex-image">
-								<img src="/images/game-3.png" alt="" class="flex-image" id="cut-image">
+								
+								<span class="pconlytext">[This game is only playable on desktop]</span>
+		
+								 <h1 class="pconly" id="play" style="text-align: center; margin-top: 7em; margin-bottom: 7em;"> <a style="cursor:pointer; font-size: 3.5em; " onclick="playgame()" class="fas fa-play-circle"></a> <br><br> Play Game</h1>
+								<div class="pconly">
+									
+									<div id="holder" style="display: block; width: 50%; margin: auto;">
+										<iframe id="game" style="height: 100%; width: 100%; aspect-ratio: 512/495;" frameborder="0"  src="" allowfullscreen="" width="1024" height="960"><a href="https://round747.itch.io/esperanza">Play Esperanza on itch.io</a></iframe>
+									</div>
 								</div>
+								
 								<hr>
-								<p>Esperanza is a short story game set in <a href="/wardenbearers">The Wardenbearers</a> universe. You can read about and download it for free from <a href="https://round747.itch.io/esperanza">Itch.io.</a> <br>
+								<p>Esperanza is a short story game set in <a href="/wardenbearers">The Wardenbearers</a> universe. You can read about and download the desktop version for free from <a href="https://round747.itch.io/esperanza">Itch.io.</a> <br>
 									Huge thanks to my brother, who created the games soundtrack. You can buy it for $2 <a href="https://round747.itch.io/esperanza-original-soundtrack">here.</a> <br>
 									<br>
-									Alternatively, you can download the files here: <br> <a href="/Downloads/Esperanza (v 1.01).zip" download="Esperanza (v 1.01).zip">Esperanza (v 1.01).zip</a> <x></x> 53MB <x></x> [Windows] <br>
+									Alternatively, you can download the desktop version here: <br> <a href="/Downloads/Esperanza (v 1.01).zip" download="Esperanza (v 1.01).zip">Esperanza (v 1.01).zip</a> <x></x> 53MB <x></x> [Windows] <br>
 									<a href="/Downloads/Esperanza  (v 1.01)_Mac.zip" download="Esperanza (v 1.01).zip">Esperanza (v 1.01).zip</a> <x></x> 61MB <x></x> [MacOS] <br>
 								</p>
 								
@@ -102,6 +107,24 @@
 			<script src="/assets/js/breakpoints.min.js"></script>
 			<script src="/assets/js/util.js"></script>
 			<script src="/assets/js/main.js"></script>
+			<script>
+
+				var holder = document.querySelector("#holder");
+				var game = document.querySelector("#game");
+				var play = document.querySelector("#play");
+
+
+				holder.style.display = "none";
+
+				var link = "https://itch.io/embed-upload/12501008?color=111111";
+				function playgame()
+				{
+					play.style.display = "none";
+					game.src = link;
+					holder.style.display = "block";
+
+				}
+			</script>
 
 			
 			
