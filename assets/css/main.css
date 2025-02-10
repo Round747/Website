@@ -3137,6 +3137,10 @@ input, select, textarea {
 					margin-bottom: 0 ;
 				}
 
+				.content-warning{
+					padding-right: 1.5em !important;
+				}
+
 				 .content-warning time{
 					 display: inline-block !important; 
 				}
@@ -3144,6 +3148,26 @@ input, select, textarea {
 			  .content-warning h3{
 				  margin-bottom: 0;
 				}
+
+				.type-icon{
+					color: #acacac;
+					display: inline; 
+					float: right; 
+					font-size: 1.2em; 
+					margin-top: 0.2em;
+				}
+
+				.pdf-icon{
+					color: #646464;
+				}
+
+				.pdf-toolbar-button:hover .pdf-icon{
+					color: var(--highlight-colour-) !important;
+				}
+
+				
+
+				
 
 /* Mini Post */
 
