@@ -28,6 +28,10 @@
 	}
 }
 
+#bottom-control{
+	display: none;
+}
+
 
 
 .button.large.Font-3, .button.Font-3
