@@ -3155,6 +3155,7 @@ input, select, textarea {
 					float: right; 
 					font-size: 1.2em; 
 					margin-top: 0.2em;
+					/* umm... hello? work please! */
 				}
 
 				.pdf-icon{
