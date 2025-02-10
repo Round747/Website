@@ -73,9 +73,9 @@
 									<!-- <div style="height: 80px;"></div> -->
 									<div id="navL">
 										<div id="navigation_controls">
-											<button class="pdf-toolbar-button" id="previous"><i style="font-size: 1.1em;" class="fas fa-arrow-left pdf-icon"></i></button>
-											<div class="pdf-input button " id="current_page" value="1" type="number" style="color: #646464 !important">1/--</div>
-											<button class="pdf-toolbar-button" id="next"><i style="font-size: 1.1em;" class="fas fa-arrow-right pdf-icon"></i></button>
+											<button class="pdf-toolbar-button" onclick="previous()" id="previous"><i style="font-size: 1.1em;" class="fas fa-arrow-left pdf-icon"></i></button>
+											<div class="pdf-input button current_page" id="current_page" value="1" type="number" style="color: #646464 !important">1/--</div>
+											<button class="pdf-toolbar-button" onclick="next()" id="next"><i style="font-size: 1.1em;" class="fas fa-arrow-right pdf-icon"></i></button>
 										</div>
 									</div>
 									
@@ -98,6 +98,14 @@
 								
 							<div id="newnav"></div>
 							<div id="new_canvas"></div>
+
+							<div style="display: flex; justify-content: space-around; margin-bottom: 1em;" id="bottom-control">
+								<div id="navigation_controls">
+									<button class="pdf-toolbar-button" id="previous" onclick="previous()"><i style="font-size: 1.1em;" class="fas fa-arrow-left pdf-icon"></i></button>
+									<div class="pdf-input button current_page" id="current_page" value="1" type="number" style="color: #646464 !important">1/--</div>
+									<button class="pdf-toolbar-button" id="next" onclick="next()"><i style="font-size: 1.1em;" class="fas fa-arrow-right pdf-icon"></i></button>
+								</div>
+							</div>
 								
 								</footer>
 							</article>
@@ -129,42 +137,54 @@
 					currentPage: 1,
 					zoom: 1.9
 				}
+
+				const zoomamount = 0.4;
 				
 				pdfjsLib.getDocument("/PDFs/The Billets in Flesselles.pdf").then((pdf) => {
 					defaultState.pdf = pdf;
 					render();
-					document.getElementById("current_page").innerHTML = defaultState.currentPage  + "/" + defaultState.pdf._pdfInfo.numPages;
+					updatepagenumber();
 				});
 
-				
+				function updatepagenumber()
+				{
+					var collection = document.getElementsByClassName("current_page");
+					
+					
+					for(i = 0; i<collection.length; i++)
+					{
+						
+						collection.item(i).innerHTML = defaultState.currentPage  + "/" + defaultState.pdf._pdfInfo.numPages;
+					}
+				}
 
-				document.getElementById('previous').addEventListener('click', (e) => {
+				function previous()
+				{
 					if(defaultState.pdf == null || defaultState.currentPage == 1) return;
 					defaultState.currentPage -= 1;
-					document.getElementById("current_page").innerHTML = defaultState.currentPage  + "/" + defaultState.pdf._pdfInfo.numPages;
+					updatepagenumber();
+					
 					render();
+				}
 
-					// scrollTo(0,250);
-				});
-
-				document.getElementById('next').addEventListener('click', (e) => {
+				function next()
+				{
 					if(defaultState.pdf == null || defaultState.currentPage > defaultState.pdf._pdfInfo.numPages - 1) return;
 					defaultState.currentPage += 1;
-					document.getElementById("current_page").innerHTML = defaultState.currentPage + "/" + defaultState.pdf._pdfInfo.numPages;
-					render();
+					updatepagenumber();
 					
-					// scrollTo(0,250);
-				});
+					render();
+				}
 
 				document.getElementById('zoom_in').addEventListener('click', (e) => {
-					if(defaultState.pdf == null || defaultState.zoom >= 2.3) return;
-					defaultState.zoom += 0.4;
+					if(defaultState.pdf == null || defaultState.zoom >= 2.1) return;
+					defaultState.zoom += zoomamount;
 					render();
 				});
 
 				document.getElementById('zoom_out').addEventListener('click', (e) => {
-					if(defaultState.pdf == null || defaultState.zoom <= 1.1) return;
-					defaultState.zoom -= 0.4;
+					if(defaultState.pdf == null || defaultState.zoom <= 1.2) return;
+					defaultState.zoom -= zoomamount;
 					render();
 				});
 
@@ -183,11 +203,13 @@
 						breakpoints.on('<=large', function() {
 							canvas.style.height = 100 + "%"; //showing size will be smaller size
         				canvas.style.width = 100 + "%";
+						document.getElementById("bottom-control").style.display = "flex";
 						});
 
 						breakpoints.on('>large', function() {
 							canvas.style.height = viewport.height + "px"; //showing size will be smaller size
         				canvas.style.width = viewport.width + "px";
+						document.getElementById("bottom-control").style.display = "none";
 						});
 
 						var renderContext = {

@@ -451,7 +451,9 @@ x{
 		justify-content: space-around;
 	}
 
-	
+	#canvas_container{
+		margin-bottom: 0.5em;
+	}
 	
 	/* #flex-holder{
 		display: block;
