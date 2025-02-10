@@ -30,6 +30,8 @@
 
 #bottom-control{
 	display: none;
+	justify-content: space-around;
+	margin-bottom: 1em;
 }
 /* force rebuild? */
 
