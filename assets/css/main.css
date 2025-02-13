@@ -28,6 +28,17 @@
 	}
 }
 
+.text-gradient{
+	left: 50%; 
+	transform: translateX(-50%);  
+	width: 95%; 
+	z-index: 3;
+	position:absolute;  
+	bottom: 7.5em;  
+	background-image: linear-gradient( rgba(255, 255, 255, 0), white);
+	pointer-events: none;
+}
+
 #bottom-control{
 	display: none;
 	justify-content: space-around;
