@@ -1,0 +1,137 @@
+<!DOCTYPE HTML>
+<!--
+	Future Imperfect by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Liam Latz - Sempiternal</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="/assets/css/main.css" />
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
+		<link rel="icon" type="image/x-icon" href="/images/Icon-small.png">
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+					<header id="header">
+						<h1><a href="/" class="Font-3" style="font-size: 1em;">LiAM ‎   lATz</a></h1>
+						<nav class="links">
+							<ul>
+								<li><a href="/about">About</a></li>
+								<li><a href="/works">Works</a></li>
+								<li><a href="/posts">Posts</a></li>
+								<li><a href="/contact">Contact</a></li>
+							</ul>
+						</nav>
+						<nav>
+							
+							<ul class="icons">
+								<li><a href="https://www.instagram.com/liam_latz05/" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+								<li><a href="https://www.facebook.com/liam.latz.1" target="_blank" class="icon brands fa-facebook-f" style="font-size: 0.875em;"><span class="label">Facebook</span></a></li>												
+							</ul>
+							
+						</nav>
+					</header>
+
+					<header id="header2">
+						<nav class="links" style="border-left: 0;">
+							<ul>
+								<li><a href="/about">About</a></li>
+								<li><a href="/works">Works</a></li>
+								<li><a href="/posts">Posts</a></li>
+								<li><a href="/contact">Contact</a></li>
+							</ul>
+						</nav>
+					</header>
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- Post -->
+							<article class="post">
+								<header>
+									<div class="title">
+										<h2><a href="/Works/sempiternal" class="Font-2">semPiTernal</a></h2>
+										<p>Short story game made for<a href="https://itch.io/jam/brackeys-13" target="_blank"> Brackeys Game Jam 2025.1</a></p>
+									</div>
+									<div class="meta">
+										<time class="published" datetime="2024-12-28">February 23, 2025</time>
+										
+									</div>
+								</header>
+								
+								
+								<span class="pconlytext">[This game is only playable on desktop]</span>
+		
+								 <h1 class="pconly" id="play" style="text-align: center; margin-top: 5em; margin-bottom: 3em;"> <a href="https://itch.io/embed-upload/12912804?color=181818" style="cursor:pointer; font-size: 3.5em; "  class="fas fa-play-circle"></a> <br><br> Play Game</h1> <!--onclick="playgame()"-->
+								<div class="pconly">
+									
+									<div id="holder" style="display: block; width: 720px; margin: auto;">
+										<iframe id="game" style="height: 100%; width: 100%; aspect-ratio: 720/548;" frameborder="0"  src=""  width="720" height="548"><a href="https://round747.itch.io/sempiternal">Play Sempiternal on itch.io</a></iframe>
+									</div>
+								</div>
+
+								
+
+								
+								
+								<p class="pconly"><b>Controls:</b> <br>
+									Move - WASD or Arrow keys <br> Interact - Left mouse click <br> Menu - Escape</p>
+								<hr>
+								<p>
+									Sempiternal is a short story game I created in one week for <a href="https://itch.io/jam/brackeys-13" target="_blank">Brackeys Game Jam 2025.1.</a> You can read about it and play it from <a href="https://round747.itch.io/sempiternal" target="_blank">Itch.io.</a>
+								</p>
+								
+							</article>
+
+					</div>
+
+				<!-- Footer -->
+				<section id="footer">
+					<ul class="icons">
+						<li><a href="https://www.instagram.com/liam_latz05/" target="_blank" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="https://www.facebook.com/liam.latz.1" target="_blank" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="https://round747.itch.io/" target="_blank" class="icon brands fab fa-itch-io" ><span class="label">Itch.io</span></a></li>
+						<li><a href="/contact" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+					<p class="copyright">&copy; Liam Latz 2025. Website Design: <a href="http://html5up.net" target="_blank">HTML5 UP</a>. Images: <a href="http://pixabay.com" target="_blank">Pixabay</a> & <a href="https://depositphotos.com" target="_blank">depositphotos</a>. </p>
+				</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="/assets/js/jquery.min.js"></script>
+			<script src="/assets/js/browser.min.js"></script>
+			<script src="/assets/js/breakpoints.min.js"></script>
+			<script src="/assets/js/util.js"></script>
+			<script src="/assets/js/main.js"></script>
+			<script>
+
+				var holder = document.querySelector("#holder");
+				var game = document.querySelector("#game");
+				var play = document.querySelector("#play");
+
+
+				holder.style.display = "none";
+
+				var link = "https://itch.io/embed-upload/12900948?color=000000";
+				function playgame()
+				{
+					play.style.display = "none";
+					game.src = link;
+					holder.style.display = "block";
+
+				}
+			</script>
+
+			
+			
+
+	</body>
+</html>
