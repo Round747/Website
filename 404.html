@@ -59,7 +59,7 @@
 							<h2 style=" font-size: 3.5em; margin-bottom: 0.25em;" class="Font-2">404</h2>
 							<h2 style=" margin-bottom: 2em;" class="Font-2">PAgE NOT FOUND</h2>
 							<p>We couldn't find the page you were looking for.</p>
-							<button onclick="() => {history.back()}" >go back</button>
+							<button onclick="func()" >go back</button>
 
 						</div>
 						</div>
@@ -68,8 +68,7 @@
 						<script>
 							function func()
 							{
-								navigator.clipboard.writeText('liamlatzwriter@gmail.com'); 
-								alert('Copied to clipboard');
+								history.back();
 							}
 							
 						</script>
