@@ -117,10 +117,17 @@
 		text-align: center;
 		display: none;
 	}
-
+#mobile-all-button{
+	display: none;
+}
 
 @media screen and (max-width: 720px) {
-
+	#all-button{
+		display: none;
+	}
+	#mobile-all-button{
+		display: block;
+	}
 	.flex-image{
 		width: 48%;
 	}
@@ -194,6 +201,7 @@
 		font-size: 12pt;
 	}
 
+	
 }
 
 #wrapper{
@@ -555,6 +563,9 @@ blockquote, q {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+	/* border-left:  solid 1px rgba(160, 160, 160, 0.3);
+	border-right:  solid 1px rgba(160, 160, 160, 0.3); */
+
 }
 
 body {
@@ -3181,6 +3192,21 @@ input, select, textarea {
 					/* umm... hello? work please! */
 				}
 
+				.image i{
+					color: #acacac;
+				}
+
+				.image i::before{
+					-moz-transition: color 0.2s ease;
+					-webkit-transition: color 0.2s ease;
+					-ms-transition: color 0.2s ease;
+					transition: color 0.2s ease;
+				}
+
+				.image i:hover{
+					color:var(--highlight-colour-)
+				}
+
 				.pdf-icon{
 					color: #646464;
 				}
@@ -3664,7 +3690,7 @@ input, select, textarea {
 	}
 
 		table tbody tr {
-			border: solid 1px rgba(160, 160, 160, 0.3);
+			/* border: solid 1px rgba(160, 160, 160, 0.3); */
 			border-left: 0;
 			border-right: 0;
 		}
