@@ -1,0 +1,300 @@
+﻿// To view this file in the browser, it was renamed to a text file. Simply remove the ".txt" to get the c# file.
+
+class Program
+{
+    List<Token> tokenLine = new(); // tokens for a single line of code
+
+    string lineText = ""; // case sensitive, literal source code
+    char[] lineCharacters = Array.Empty<char>(); // lowercase array of characters in lineText
+
+    int lineposition = 0;
+    char C;
+
+    static void Main(string[] args) // this is a console application, in Unity the string will be fetched from a text box
+    {
+        Program program = new();
+
+        string? inputLine = Console.ReadLine();
+        program.lineText = (inputLine + " ") ?? ""; // if inputline is null, make empty string. Adds a single space as some functions look forward one character
+
+        program.LexLine();
+    }
+
+    void LexLine()
+    {
+        lineCharacters = lineText.ToCharArray();
+
+        lineposition = 0;
+
+        C = lineCharacters[0];
+
+        if (char.IsNumber(C)) ParseLineNumber(); // line should start with line number
+
+        for (; lineposition < lineCharacters.Length; lineposition++) // iterate through line characters
+        {
+            C = lineCharacters[lineposition];
+
+            switch (C) // evaluate all single character tokens
+            {
+                case '\"':
+                    ParseText();
+                    break;
+                case '<':
+                    char peekCL = lineCharacters[lineposition + 1]; // looks at the next character to see if it is a two character token
+                    if (peekCL.Equals('>'))
+                    {
+                        lineposition++;
+                        CreateToken(TokenType.NotEqualTo, "<>");
+                    }
+                    else if (peekCL.Equals('='))
+                    {
+                        lineposition++;
+                        CreateToken(TokenType.GreaterEqual, "<=");
+                    }
+                    else CreateToken(TokenType.Less, "<");
+                    break;
+                case '>':
+                    if (lineCharacters[lineposition + 1].Equals('='))
+                    {
+                        lineposition++;
+                        CreateToken(TokenType.GreaterEqual, ">=");
+                    }
+                    else CreateToken(TokenType.Greater, ">");
+                    break;
+                case '+':
+                    CreateToken(TokenType.Plus, "+");
+                    break;
+                case '-':
+                    CreateToken(TokenType.Minus, "-");
+                    break;
+                case '*':
+                    CreateToken(TokenType.Multiply, "*");
+                    break;
+                case '/':
+                    CreateToken(TokenType.Divide, "/");
+                    break;
+                case '=':
+                    if (lineCharacters[lineposition + 1].Equals('='))
+                    {
+                        lineposition++;
+                        CreateToken(TokenType.EqualTo, "==");
+                    }
+                    else CreateToken(TokenType.Equals, "=");
+                    break;
+                case '(':
+                    CreateToken(TokenType.OpenBracket, "(");
+                    break;
+                case ')':
+                    CreateToken(TokenType.CloseBracket, ")");
+                    break;
+                case ',':
+                    CreateToken(TokenType.Comma, ",");
+                    break;
+                case ':':
+                    CreateToken(TokenType.Colon, ":");
+                    break;
+                case ';':
+                    CreateToken(TokenType.SemiColon, ";");
+                    break;
+                case '%':
+                    CreateToken(TokenType.Percent, "%");
+                    break;
+                case '$':
+                    CreateToken(TokenType.Percent, "$");
+                    break;
+                case '@':
+                    CreateToken(TokenType.At, "@");
+                    break;
+                case ' ':
+                    break;
+                default: // not a symbol, must be a number or letter, else illegal
+                    if (char.IsNumber(C) || C.Equals('.')) ParseNumber();
+                    else if (char.IsLetter(C)) ParseIdentifier();
+                    else CreateToken(TokenType.ILLEGAL, C.ToString());
+                    break;
+            }
+        }
+
+        DebugTokens(); // displays output
+    }
+
+    void ParseIdentifier()
+    {
+        string newToken = "";
+
+        bool hasCaps = false;
+        for (; lineposition < lineCharacters.Length; lineposition++)
+        {
+            if (char.IsUpper(lineCharacters[lineposition])) hasCaps = true;
+            if (char.IsLetter(lineCharacters[lineposition])) newToken += lineCharacters[lineposition];
+            else
+            {
+                lineposition--;
+                break;
+            }
+        }
+        if (hasCaps)
+        {
+            CreateToken(TokenType.ILLEGAL, newToken); // commands and variables cannot have capital letters
+            return;
+        }
+
+        if (Commands.TryGetValue(newToken.ToLower(), out TokenType value)) CreateToken(value, newToken); // identifier is a command, set the tokentype accordingly
+        else CreateToken(TokenType.Identitifer, newToken); // identifier is not recognised, must be a variable
+    }
+
+    void ParseLineNumber()
+    {
+        string newToken = "";
+
+        for (; lineposition < lineCharacters.Length; lineposition++)
+        {
+            if (char.IsNumber(lineCharacters[lineposition])) newToken += lineCharacters[lineposition];
+            else break;
+        }
+
+        CreateToken(TokenType.LineNumber, newToken);
+    }
+
+    void ParseNumber()
+    {
+        string newToken = "";
+
+        if (lineCharacters[lineposition].Equals('.')) // if first character is '.', then assume 0.XYZ
+        {
+            newToken = "0"; // left as 0 because the loop will still evaluate the full stop
+
+            if (!char.IsNumber(lineCharacters[lineposition + 1])) // only '.' was inputted, therefore assumed number is 0.0
+            {
+                newToken = "0.0";
+                CreateToken(TokenType.Number, newToken);
+                return;
+            }
+        }
+
+        bool stopLast = false;
+
+        for (; lineposition < lineCharacters.Length; lineposition++)
+        {
+            if (char.IsNumber(lineCharacters[lineposition]) || lineCharacters[lineposition].Equals('.'))
+            {
+                if (stopLast) stopLast = false;
+                if (lineCharacters[lineposition].Equals('.')) stopLast = true;
+                newToken += lineCharacters[lineposition];
+            }
+            else
+            {
+                if (stopLast) newToken += "0";
+                lineposition--;
+                break;
+            }
+        }
+
+        CreateToken(TokenType.Number, newToken);
+    }
+
+    void ParseText()
+    {
+        string newToken = "";
+
+        lineposition++; // move past the "
+
+        for (; lineposition < lineCharacters.Length; lineposition++)
+        {
+            if (!lineCharacters[lineposition].Equals('\"')) newToken += lineCharacters[lineposition];
+            else break;
+        }
+
+        CreateToken(TokenType.Text, newToken);
+    }
+
+    void DebugTokens()
+    {
+
+        Console.WriteLine($"-------------------------\n\nSource Code: {lineText}");
+        Console.WriteLine("Tokens:\n{");
+        foreach (Token token in tokenLine)
+        {
+            Console.WriteLine($"Token: \"{token.tokenType}\", Value: \"{token.value}\"");
+        }
+        Console.WriteLine("}\n\n-------------------------");
+    }
+
+    void CreateToken(TokenType type, string value)
+    {
+        Token newToken = new(type, value);
+        tokenLine.Add(newToken);
+    }
+
+    public struct Token(TokenType Type, string Value)
+    {
+        public TokenType tokenType = Type;
+        public string value = Value ?? "";
+    }
+
+    public enum TokenType
+    {
+        Identitifer, Number, Text,
+        Csr, Fre, Asc, Chr, Slc, Abs, Rnd, Cos, Tan, Sgn, Sqr, Flr, Cel, Exp,
+        Print, Get, Key, Parse, Reset, Goto, Gosub, Return, End, Write, On, Time, Read, Com,
+        If, Then, For, To, Step, Next, Or, Not, And,
+        Save, Load, List, New, Dir, Run, Delete, AutoRun,
+        EqualTo, NotEqualTo, Less, Greater, LessEqual, GreaterEqual,
+        OpenBracket, CloseBracket, Comma, Colon, SemiColon, Percent, Dollar, At, Plus, Minus, Multiply, Divide, Equals,
+        LineNumber,
+        ILLEGAL
+    }
+
+    Dictionary<string, TokenType> Commands = new() // command strings and their corresponding token type
+    {
+        // Keywords
+        {"csr", TokenType.Csr}, {"fre", TokenType.Fre}, {"asc", TokenType.Asc}, {"chr", TokenType.Chr},
+        {"slc", TokenType.Slc}, {"abs", TokenType.Abs}, {"rnd", TokenType.Rnd}, {"cos", TokenType.Cos},
+        {"tan", TokenType.Tan}, {"sgn", TokenType.Sgn}, {"sqr", TokenType.Sqr}, {"flr", TokenType.Flr},
+        {"cel", TokenType.Cel}, {"exp", TokenType.Exp},
+
+        {"print", TokenType.Print}, {"get", TokenType.Get}, {"key", TokenType.Key}, {"parse", TokenType.Parse},
+        {"reset", TokenType.Reset}, {"goto", TokenType.Goto}, {"gosub", TokenType.Gosub}, {"return", TokenType.Return},
+        {"end", TokenType.End}, {"write", TokenType.Write}, {"on", TokenType.On}, {"time", TokenType.Time},
+        {"read", TokenType.Read}, {"com", TokenType.Com},
+
+        {"if", TokenType.If}, {"then", TokenType.Then}, {"for", TokenType.For}, {"to", TokenType.To},
+        {"step", TokenType.Step}, {"next", TokenType.Next}, {"or", TokenType.Or}, {"not", TokenType.Not},
+        {"and", TokenType.And},
+
+        {"save", TokenType.Save}, {"load", TokenType.Load}, {"list", TokenType.List}, {"new", TokenType.New},
+        {"dir", TokenType.Dir}, {"run", TokenType.Run}, {"delete", TokenType.Delete}, {"autorun", TokenType.AutoRun},
+
+        // Operators
+        {"==", TokenType.EqualTo}, {"<>", TokenType.NotEqualTo}, {"<", TokenType.Less}, {">", TokenType.Greater},
+        {"<=", TokenType.LessEqual}, {">=", TokenType.GreaterEqual}, {"+", TokenType.Plus}, {"-", TokenType.Minus},
+        {"*", TokenType.Multiply}, {"/", TokenType.Divide}, {"=", TokenType.Equals},
+
+        // Symbols
+        {"(", TokenType.OpenBracket}, {")", TokenType.CloseBracket}, {",", TokenType.Comma}, {":", TokenType.Colon},
+        {";", TokenType.SemiColon}, {"%", TokenType.Percent}, {"$", TokenType.Dollar}, {"@", TokenType.At}
+    };
+
+    //* String values for tokens
+
+    // string[] Keywords =
+    // {
+    //     "csr", "fre", "asc", "chr", "slc", "abs", "rnd", "cos", "tan", "sgn", "sqr", "flr", "cel", "exp",
+    //     "print", "get", "key", "parse", "reset", "goto", "gosub", "return", "end", "write", "on", "time", "read", "com",
+    //     "if", "then", "for", "to", "step", "next", "or", "not", "and",
+    //     "save", "load", "list", "new", "dir", "run", "delete", "autorun"
+    // };
+
+    // string[] Operators =
+    // {
+    //     "==", "<>", "<", ">", "<=", ">=", "+", "-", "*", "/", "="
+    // };
+
+    // char[] Symbols =
+    // {
+    //     '(', ')', ',', ':', ';', '%', '$', '@'
+    // };
+
+
+
+}

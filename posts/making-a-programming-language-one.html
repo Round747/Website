@@ -1,0 +1,418 @@
+<!DOCTYPE HTML>
+<!--
+	Future Imperfect by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+
+<head>
+	<title>Liam Latz - Making a Programming Language (Part 1: Lexer)</title>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+	<link rel="stylesheet" href="/assets/css/main.css" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
+	<link rel="icon" type="image/x-icon" href="/images/Icon-small.png">
+</head>
+
+<body class="is-preload">
+
+	<!-- Wrapper -->
+	<div id="wrapper">
+
+		<!-- Header -->
+		<header id="header">
+			<h1><a href="/" class="Font-3" style="font-size: 1em;">LiAM ‎ lATz</a></h1>
+			<nav class="links">
+				<ul>
+					<li><a href="/about">About</a></li>
+					<li><a href="/works">Works</a></li>
+					<li><a href="/posts">Posts</a></li>
+					<li><a href="/contact">Contact</a></li>
+				</ul>
+			</nav>
+			<nav>
+
+				<ul class="icons">
+					<li><a href="https://www.instagram.com/liam_latz05/" target="_blank"
+							class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+					<li><a href="https://www.facebook.com/liam.latz.1" target="_blank" class="icon brands fa-facebook-f"
+							style="font-size: 0.875em;"><span class="label">Facebook</span></a></li>
+				</ul>
+
+			</nav>
+		</header>
+
+		<header id="header2">
+			<nav class="links" style="border-left: 0;">
+				<ul>
+					<li><a href="/about">About</a></li>
+					<li><a href="/works">Works</a></li>
+					<li><a href="/posts">Posts</a></li>
+					<li><a href="/contact">Contact</a></li>
+				</ul>
+			</nav>
+		</header>
+
+		<!-- Main -->
+		<div id="main">
+
+			<!-- Post -->
+			<article class="post">
+				<header>
+					<div class="title">
+						<h2><a href="/posts/making-a-programming-language-one" class="Font-2">mAking A ProgrAmming
+								lAngUAge<br>(ParT 1,
+								LeXer)</a></h2>
+					</div>
+					<div class="meta">
+						<time class="published" datetime="2015-11-01">July 27, 2025</time>
+						<p>1000 words</p>
+					</div>
+				</header>
+
+				<p>While working on an idea for a Commodore 64 style sci-fi video game, I came up with the idea to have
+					the ships computer act like a real 80s home computer.</p>
+				<p>Since I wanted to add mini games to the computer, I thought it would be cool to have a real
+					programming language that players could use to make their own games on it.
+				</p>
+				<p>The Commodore 64 uses a programming language called BASIC. BASIC is, well, a basic language, so
+					I thought making my own dialect of it would be a fun challenge.
+				</p>
+				<p><b>So how <i>do</i> you make your own programming language?</b></p>
+
+				<p>There are three steps required for plain text to be interpreted as functional code:</p>
+				<ul>
+					<li>
+						The first is a <b>Lexer</b>, this turns the provided text into 'tokens', which make the code
+						easier to
+						understand later in the process.
+					</li>
+					<li>
+						Next is a <b>Parser</b>, this takes the tokens and constructs what's called an 'abstract syntax
+						tree',
+						which is a data structure that describes how and in what order the instructions should be
+						performed in.
+					</li>
+					<li>
+						Lastly, the <b>Interpreter</b>, which reads the instructions and performs the corresponding
+						actions.
+					</li>
+				</ul>
+				<p>
+					I started by defining the rules of the language, which I am calling SIMPLE. I am basing it
+					off of Commodore Basic V2, so most of the syntax and commands are exactly the same. I did however,
+					make some small changes that I thought would make coding in it easier.
+				</p>
+				<hr>
+				<p><b>This post will go over the creation of the Lexer.</b> I will be writing it in c#, with the goal of
+					the code running in a virtual machine inside of Unity. You see the final file <a
+						href="/Downloads/Lexer.cs.txt" target="_blank">here.</a></p>
+
+				<p>A line of BASIC code could look something like this:</p>
+				<pre class="codeblock"><code>10 A = 5*C : PRINT A</code></pre>
+				<p>In a tokenised form, it might look something like this:</p>
+				<pre class="codeblock"><code>Token: "LineNumber", Value: "10"
+Token: "Identifier", Value: "A"
+Token: "Equals", Value: "="
+Token: "Number", Value: "5"
+Token: "Multiply", Value: "*"
+Token: "Identifier", Value: "C"
+Token: "Colon", Value: ":"
+Token: "Print", Value: "PRINT"
+Token: "Identifier", Value: "A"</code></pre>
+				<p>The first step in creating this lexer is defining what a token is. Currently, my tokens store two
+					values. Their type, and their value.</p>
+				<pre class="codeblock"><code>public struct Token(TokenType Type, string Value)
+{
+	public TokenType tokenType = Type;
+	public string value = Value ?? "";
+}</code></pre>
+				<p>A tokens 'type' is stored in an enum, which is easier to parse in code than the string value.</p>
+				<pre class="codeblock"><code>public enum TokenType
+{
+	Identitifer, Number, Text,
+	Csr, Fre, Asc, Chr, Slc, Abs, Rnd, Cos, Tan, Sgn, Sqr, Flr, Cel, Exp,
+	Print, Get, Key, Parse, Reset, Goto, Gosub, Return, End, Write, On, Time, Read, Com,
+	If, Then, For, To, Step, Next, Or, Not, And,
+	Save, Load, List, New, Dir, Run, Delete, AutoRun,
+	EqualTo, NotEqualTo, Less, Greater, LessEqual, GreaterEqual,
+	OpenBracket, CloseBracket, Comma, Colon, SemiColon, Percent, Dollar, At, Plus, Minus, Multiply, Divide, Equals,
+	LineNumber,
+	ILLEGAL
+}</code></pre>
+				<p>These token types include all commands, methods, operators, and punctuation in the SIMPLE langauge.
+					It also includes types such as text and number variables, and an illegal token for anything not
+					recognised.</p>
+				<p>The goal of the lexer is to create a list of these tokens, based on the code inputted by the user.
+					Note that the lexer does not care if the code is grammaticaly correct, or even if it contains
+					illegal tokens, as these errors will be handled by the parser in the next step.</p>
+				<hr>
+				<p>To get started parsing we'll need some variables. The Lexer will read throught the text one character
+					at a time, so we'll need an array of all the characters in the inputted code. We'll also need to
+					remember the position in the array of which character we're looking at. And lastly, we'll need a
+					list of tokens that will represent a single line of source code. (A list of these lists will
+					represent the entire program)</p>
+				<pre class="codeblock"><code>List&#60;Token> tokenLine = new(); // tokens for a single line of code
+
+string lineText = ""; // literal source code
+char[] lineCharacters = Array.Empty<char>(); // array of characters in lineText
+
+int lineposition = 0; //position of current character
+char C; // character being read</code></pre>
+				<p>
+					The easiest tokens to parse are the ones that are a single character, i.e. <code>+</code>,
+					<code>=</code>, or <code>(</code>. To tokenise these, you can simply use a switch statement to check
+					if the character we are currently reading is one of our tokens. Since SIMPLE ingores white-space,
+					reading a space will move on to the next character.
+				<pre class="codeblock"><code>switch(C)
+{
+	case '+':
+		CreateToken(TokenType.Plus, "+");
+		break;
+	case '-':
+		CreateToken(TokenType.Minus, "-");
+		break;
+	case '*':
+		CreateToken(TokenType.Multiply, "*");
+		break;
+	case '/':
+		CreateToken(TokenType.Divide, "/");
+		break;
+	case ' ':
+		break;
+}</code></pre>
+				<p>These statments will be filled out for every one character token. The <code>CreateToken()</code>
+					method used simply makes a token, fills out it's values, then adds it to the list of tokens for the
+					line.</p>
+				<pre class="codeblock"><code>void CreateToken(TokenType type, string value)
+{
+	Token newToken = new(type, value);
+	tokenLine.Add(newToken);
+}</code></pre>
+				<hr>
+				<p>The next tokens to parse are <b>numbers</b>, and <b>text.</b> </p>
+
+				<p><b>Text</b> is simply anything encompased in a <code>"</code>, therefore we can check for it in the
+					switch
+					statement by adding:</p>
+				<pre class="codeblock"><code>switch(C)
+{
+	case '\"':
+		ParseText();
+		break;
+	...
+
+	...
+}</code></pre>
+				<p>The <code>ParseText()</code> method adds new characters to a string until it finds the closing
+					<code>"</code>, then creates a token of type text with the value of the string.
+				</p>
+				<pre class="codeblock"><code>void ParseText()
+{
+	string newToken = "";
+
+	lineposition++; // move past the "
+
+	for (; lineposition < lineCharacters.Length; lineposition++)
+	{
+		if (!lineCharacters[lineposition].Equals('\"')) newToken += lineCharacters[lineposition];
+		else break;
+	}
+
+	CreateToken(TokenType.Text, newToken);
+}</code></pre>
+
+
+				<hr>
+
+				<p>
+					For <b>numbers</b>, we can check if our character is a number with <code>char.IsNumber(C)</code>,
+					and add new characters to a string until it becomes false. This logic is a bit more complicated as
+					it allows for floating point (decimal) numbers, and as such
+					handles edge cases where the number inputted might be <code>.12</code>, <code>23.</code>, or just
+					<code>.</code>.
+				</p>
+				<pre class="codeblock"><code>void ParseNumber()
+{
+	string newToken = "";
+
+	if (lineCharacters[lineposition].Equals('.')) // if first character is '.', then assume 0.XYZ
+	{
+		newToken = "0"; // left as 0 because the loop will still evaluate the full stop
+
+		if (!char.IsNumber(lineCharacters[lineposition + 1])) // only '.' was inputted, therefore assumed number is 0.0
+		{
+			newToken = "0.0";
+			CreateToken(TokenType.Number, newToken);
+			return;
+		}
+	}
+
+	bool stopLast = false;
+
+	for (; lineposition < lineCharacters.Length; lineposition++)
+	{
+		if (char.IsNumber(lineCharacters[lineposition]) || lineCharacters[lineposition].Equals('.'))
+		{
+			if (stopLast) stopLast = false;
+			if (lineCharacters[lineposition].Equals('.')) stopLast = true;
+			newToken += lineCharacters[lineposition];
+		}
+		else
+		{
+			if (stopLast) newToken += "0"; // if the last character in the number was a '.' then assume XYZ.0
+			lineposition--;
+			break;
+		}
+	}
+
+	CreateToken(TokenType.Number, newToken);
+}</code></pre>
+				<p>Since SIMPLE uses line numbers at the beginning of a line of code, a modified version of this method
+					is called before the string is parsed, which doesnt allow for floating point numbers.</p>
+				</p>
+				<hr>
+				<p>Lastly, there are <b>identifiers.</b> These are words not encased in quotes, which are either a
+					language
+					command, such as <code>PRINT</code>, or they are variable definitions. </p>
+				<p>To parse these, it loops
+					through the characters and checks if they are letters. It also notes if it found any capital
+					letters,
+					as these are not allowed in SIMPLE.</p>
+
+				<pre class="codeblock"><code>void ParseIdentifier()
+{
+	string newToken = "";
+	bool hasCaps = false;
+
+	for (; lineposition < lineCharacters.Length; lineposition++)
+	{
+		if (char.IsUpper(lineCharacters[lineposition])) hasCaps = true;
+		if (char.IsLetter(lineCharacters[lineposition])) newToken += lineCharacters[lineposition];
+		else
+		{
+			lineposition--;
+			break;
+		}
+	}
+	if (hasCaps)
+	{
+		CreateToken(TokenType.ILLEGAL, newToken); // commands and variables cannot have capital letters
+		return;
+	}
+
+	if (Commands.TryGetValue(newToken.ToLower(), out TokenType value)) CreateToken(value, newToken); // identifier is a command, set the tokentype accordingly
+	else CreateToken(TokenType.Identitifer, newToken); // identifier is not recognised, must be a variable
+}</code></pre>
+				<p>Once the word has been parsed we have to check if its a <b>command</b> or a <b>variable.</b> To do
+					this, we use the
+					words as a key in a dictionary. If it matches an item, it means that it is one of the listed
+					commands, and it takes the corresponding tokentype and
+					creates the command token. If it isnt a match, then the word is assumed to be a variable name, and
+					is created as an 'identifier' token. If the word contains capital letters, the word is an illegal
+					token.</p>
+				<p>Our keyword-tokentype dictionary looks something like this, it is needed so that the lexer knows what
+					text corresponds to what tokentype enum value.</p>
+				<pre class="codeblock"><code>Dictionary&#60;string, TokenType> Commands = new() // command strings and their corresponding token type
+{
+	// Keywords
+	{"csr", TokenType.Csr}, {"fre", TokenType.Fre}, {"asc", TokenType.Asc}, {"chr", TokenType.Chr},
+	{"slc", TokenType.Slc}, {"abs", TokenType.Abs}, {"rnd", TokenType.Rnd}, {"cos", TokenType.Cos},
+	{"tan", TokenType.Tan}, {"sgn", TokenType.Sgn}, {"sqr", TokenType.Sqr}, {"flr", TokenType.Flr},
+	{"cel", TokenType.Cel}, {"exp", TokenType.Exp}, ... , ... , ... 
+}</code></pre>
+
+				<p><b>So overall,</b> our switch statement checks for all the single character tokens (and the
+					<code>"</code>character) and if it isnt any of those, it must be a number, or an identifier. If it
+					is none of these, an illegal token is created.
+				</p>
+
+				<pre class="codeblock"><code>switch(C)
+{
+	...
+
+	...
+
+	default: // not a symbol, must be a number or letter, else illegal
+		if (char.IsNumber(C) || C.Equals('.')) ParseNumber();
+		else if (char.IsLetter(C)) ParseIdentifier();
+		else CreateToken(TokenType.ILLEGAL, C.ToString());
+		break;
+}</code></pre>
+				<hr>
+				<p><b>To conclude,</b> with the outlined code, an example input of:</p>
+				<pre class="codeblock"><code>10 A = A*(2+5) : PRINT "RESULT" ; A</code></pre>
+				<p>Would output as:</p>
+				<pre class="codeblock"><code>Token: "LineNumber", Value: "10"
+Token: "Identitifer", Value: "A"
+Token: "Equals", Value: "="
+Token: "Identitifer", Value: "A"
+Token: "Multiply", Value: "*"
+Token: "OpenBracket", Value: "("
+Token: "Number", Value: "2"
+Token: "Plus", Value: "+"
+Token: "Number", Value: "5"
+Token: "CloseBracket", Value: ")"
+Token: "Colon", Value: ":"
+Token: "Print", Value: "PRINT"
+Token: "Text", Value: "RESULT"
+Token: "SemiColon", Value: ";"
+Token: "Identitifer", Value: "A"</code></pre>
+				<p><b>Specifically,</b> the output would be a series of <code>Token</code> structs stored inside of the
+					<code>tokenLine</code> list. The
+					above
+					'result' is the output of this code:
+				</p>
+				<pre class="codeblock"><code>foreach (Token token in tokenLine)
+{
+	Console.WriteLine($"Token: \"{token.tokenType}\", Value: \"{token.value}\"");
+}</code></pre>
+				<hr>
+				<p>So that was the outline of my Lexer! If you want to see the whole program file, click <a
+						href="/Downloads/Lexer.cs.txt" target="_blank">here.</a></p>
+				<p>I couldn't find a lot of information
+					about creating a lexer in c#, so that's why I decided to share my program.
+					<a href="https://www.youtube.com/watch?v=lwF1zrlXaW8&list=PLdcl7L1x9I0SCDCz2Vlaalnxz_beZaoNm">Logan
+						Patterson's video series</a> about creating a
+					lexer was incredibly helpful in making mine; it was written in go.
+				</p>
+				<p>Next up is the <b>parser</b>, which is much more complicated to write. I'll write a post about it
+					once it's
+					done.
+					<br> Thanks for reading!
+				</p>
+				</footer>
+			</article>
+
+		</div>
+
+		<!-- Footer -->
+		<section id="footer">
+			<ul class="icons">
+				<li><a href="https://www.instagram.com/liam_latz05/" target="_blank"
+						class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+				<li><a href="https://www.facebook.com/liam.latz.1" target="_blank"
+						class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+				<li><a href="/contact" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+			</ul>
+			<p class="copyright">&copy; Liam Latz 2025. Website Design: <a href="http://html5up.net"
+					target="_blank">HTML5 UP</a>. Images: <a href="http://pixabay.com" target="_blank">Pixabay</a> & <a
+					href="https://depositphotos.com" target="_blank">depositphotos</a>. </p>
+		</section>
+
+	</div>
+
+	<!-- Scripts -->
+	<script src="/assets/js/jquery.min.js"></script>
+	<script src="/assets/js/browser.min.js"></script>
+	<script src="/assets/js/breakpoints.min.js"></script>
+	<script src="/assets/js/util.js"></script>
+	<script src="/assets/js/main.js"></script>
+
+
+
+
+</body>
+
+</html>
