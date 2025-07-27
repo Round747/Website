@@ -71,9 +71,9 @@
 					</div>
 				</header>
 
-				<p>While working on an idea for a Commodore 64 style sci-fi video game, I came up with the idea to have
+				<p>While working on plans for a Commodore 64 style sci-fi video game, I came up with the idea to have
 					the ships computer act like a real 80s home computer.</p>
-				<p>Since I wanted to add mini games to the computer, I thought it would be cool to have a real
+				<p>Since I knew I wanted to add mini games to the computer, I thought it would be cool to have a real
 					programming language that players could use to make their own games on it.
 				</p>
 				<p>The Commodore 64 uses a programming language called BASIC. BASIC is, well, a basic language, so
@@ -142,7 +142,8 @@ Token: "Identifier", Value: "A"</code></pre>
 	ILLEGAL
 }</code></pre>
 				<p>These token types include all commands, methods, operators, and punctuation in the SIMPLE langauge.
-					It also includes types such as text and number variables, and an illegal token for anything not
+					It also includes data types such as text, numbers, and variables, and an illegal token for anything
+					not
 					recognised.</p>
 				<p>The goal of the lexer is to create a list of these tokens, based on the code inputted by the user.
 					Note that the lexer does not care if the code is grammaticaly correct, or even if it contains
@@ -162,7 +163,7 @@ int lineposition = 0; //position of current character
 char C; // character being read</code></pre>
 				<p>
 					The easiest tokens to parse are the ones that are a single character, i.e. <code>+</code>,
-					<code>=</code>, or <code>(</code>. To tokenise these, you can simply use a switch statement to check
+					<code>=</code>, or <code>(</code>. To tokenise these, you can use a switch statement to check
 					if the character we are currently reading is one of our tokens. Since SIMPLE ingores white-space,
 					reading a space will move on to the next character.
 				<pre class="codeblock"><code>switch(C)
@@ -253,15 +254,17 @@ char C; // character being read</code></pre>
 
 	for (; lineposition < lineCharacters.Length; lineposition++)
 	{
-		if (char.IsNumber(lineCharacters[lineposition]) || lineCharacters[lineposition].Equals('.'))
+		char C = lineCharacters[lineposition];
+
+		if (char.IsNumber(C) || C.Equals('.'))
 		{
 			if (stopLast) stopLast = false;
-			if (lineCharacters[lineposition].Equals('.')) stopLast = true;
-			newToken += lineCharacters[lineposition];
+			if (C.Equals('.')) stopLast = true;
+			newToken += C;
 		}
 		else
 		{
-			if (stopLast) newToken += "0"; // if the last character in the number was a '.' then assume XYZ.0
+			if (stopLast) newToken += "0";
 			lineposition--;
 			break;
 		}
@@ -284,12 +287,15 @@ char C; // character being read</code></pre>
 				<pre class="codeblock"><code>void ParseIdentifier()
 {
 	string newToken = "";
+
 	bool hasCaps = false;
 
 	for (; lineposition < lineCharacters.Length; lineposition++)
 	{
-		if (char.IsUpper(lineCharacters[lineposition])) hasCaps = true;
-		if (char.IsLetter(lineCharacters[lineposition])) newToken += lineCharacters[lineposition];
+		char C = lineCharacters[lineposition];
+
+		if (char.IsUpper(C)) hasCaps = true;
+		if (char.IsLetter(C)) newToken += C;
 		else
 		{
 			lineposition--;
@@ -307,7 +313,7 @@ char C; // character being read</code></pre>
 }</code></pre>
 				<p>Once the word has been parsed we have to check if its a <b>command</b> or a <b>variable.</b> To do
 					this, we use the
-					words as a key in a dictionary. If it matches an item, it means that it is one of the listed
+					word as a key in a dictionary. If it matches an item, it means that it is one of the listed
 					commands, and it takes the corresponding tokentype and
 					creates the command token. If it isnt a match, then the word is assumed to be a variable name, and
 					is created as an 'identifier' token. If the word contains capital letters, the word is an illegal

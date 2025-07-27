@@ -125,8 +125,10 @@ class Program
         bool hasCaps = false;
         for (; lineposition < lineCharacters.Length; lineposition++)
         {
-            if (char.IsUpper(lineCharacters[lineposition])) hasCaps = true;
-            if (char.IsLetter(lineCharacters[lineposition])) newToken += lineCharacters[lineposition];
+            char C = lineCharacters[lineposition];
+
+            if (char.IsUpper(C)) hasCaps = true;
+            if (char.IsLetter(C)) newToken += C;
             else
             {
                 lineposition--;
@@ -176,11 +178,13 @@ class Program
 
         for (; lineposition < lineCharacters.Length; lineposition++)
         {
-            if (char.IsNumber(lineCharacters[lineposition]) || lineCharacters[lineposition].Equals('.'))
+            char C = lineCharacters[lineposition];
+
+            if (char.IsNumber(C) || C.Equals('.'))
             {
                 if (stopLast) stopLast = false;
-                if (lineCharacters[lineposition].Equals('.')) stopLast = true;
-                newToken += lineCharacters[lineposition];
+                if (C.Equals('.')) stopLast = true;
+                newToken += C;
             }
             else
             {
