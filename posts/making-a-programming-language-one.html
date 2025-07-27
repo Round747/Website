@@ -12,7 +12,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 	<link rel="stylesheet" href="/assets/css/main.css" />
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.0.943/pdf.min.js"></script>
-	<link rel="icon" type="image/x-icon" href="/images/Icon-small.png">
+	<link rel="icon" type="image/png" href="/Icon-small.png">
 </head>
 
 <body class="is-preload">
@@ -101,7 +101,7 @@
 				</ul>
 				<hr>
 				<p><b>This post will go over the creation of the Lexer.</b> I will be writing it in c#, with the goal of
-					the code running in a virtual machine inside of Unity. You see the final file <a
+					the code running in a virtual machine inside of Unity. You can see the final file <a
 						href="/Downloads/Lexer.cs.txt" target="_blank">here.</a></p>
 
 				<p>A line of BASIC code could look something like this:</p>
@@ -144,7 +144,7 @@ Token: "Identifier", Value: "A"</code></pre>
 					Note that the lexer does not care if the code is grammaticaly correct, or even if it contains
 					illegal tokens, as these errors will be handled by the parser in the next step.</p>
 				<hr>
-				<p>To get started parsing we'll need some variables. The Lexer will read throught the text one character
+				<p>To get started we'll need some variables. The Lexer will read throught the text one character
 					at a time, so we'll need an array of all the characters in the inputted code. We'll also need to
 					remember the position in the array of which character we're looking at. And lastly, we'll need a
 					list of tokens that will represent a single line of source code. (A list of these lists will
@@ -158,7 +158,7 @@ int lineposition = 0; //position of current character
 char C; // character being read</code></pre>
 				<p>
 					The easiest tokens to parse are the ones that are a single character, i.e. <code>+</code>,
-					<code>=</code>, or <code>(</code>. To tokenise these, you can use a switch statement to check
+					<code>=</code>, or <code>(</code>. To tokenise these, we can use a switch statement to check
 					if the character we are currently reading is one of our tokens. Since SIMPLE ingores white-space,
 					reading a space will move on to the next character.
 				<pre class="codeblock"><code>switch(C)
@@ -178,7 +178,7 @@ char C; // character being read</code></pre>
 	case ' ':
 		break;
 }</code></pre>
-				<p>These statments will be filled out for every one character token. The <code>CreateToken()</code>
+				<p>These statments will be filled out for every single character token. The <code>CreateToken()</code>
 					method used simply makes a token, fills out it's values, then adds it to the list of tokens for the
 					line.</p>
 				<pre class="codeblock"><code>void CreateToken(TokenType type, string value)
@@ -189,7 +189,7 @@ char C; // character being read</code></pre>
 				<hr>
 				<p>The next tokens to parse are <b>numbers</b>, and <b>text.</b> </p>
 
-				<p><b>Text</b> is simply anything encompased in a <code>"</code>, therefore we can check for it in the
+				<p><b>Text</b> is anything encompassed in a <code>"</code>, therefore we can check for it in the
 					switch
 					statement by adding:</p>
 				<pre class="codeblock"><code>switch(C)
@@ -225,7 +225,7 @@ char C; // character being read</code></pre>
 				<p>
 					For <b>numbers</b>, we can check if our character is a number with <code>char.IsNumber(C)</code>,
 					and add new characters to a string until it becomes false. This logic is a bit more complicated as
-					it allows for floating point (decimal) numbers, and as such
+					it allows for floating point numbers, and as such
 					handles edge cases where the number inputted might be <code>.12</code>, <code>23.</code>, or just
 					<code>.</code>.
 				</p>
@@ -274,8 +274,8 @@ char C; // character being read</code></pre>
 				<p>Lastly, there are <b>identifiers.</b> These are words not encased in quotes, which are either a
 					language
 					command, such as <code>PRINT</code>, or they are variable definitions. </p>
-				<p>To parse these, it loops
-					through the characters and checks if they are letters. It also notes if it found any capital
+				<p>To parse these, we loop
+					through the characters and check if they are letters. We also notes if we found any capital
 					letters,
 					as these are not allowed in SIMPLE.</p>
 
