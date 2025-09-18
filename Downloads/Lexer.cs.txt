@@ -1,4 +1,5 @@
 ﻿// To view this file in the browser, it was renamed to a text file. Simply remove the ".txt" to get the c# file.
+// This lexer was written using c# 12, Unity currently uses c# 9, so the primary constructors used in some classes and structs won't work inside Unity.
 
 class Program
 {
