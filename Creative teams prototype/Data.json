@@ -1,0 +1,18 @@
+{
+    "1": {
+        "Name": "Art studio",
+        "Location": "City",
+        "Tagline": "Short tagline goes here",
+        "Description": "Open to the public with classes and exhibits. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus dolores dolorum, eos officia quidem reiciendis ipsum laudantium laborum cupiditate distinctio vel dolor, rerum fugit quo nobis sed beatae sunt exercitationem.\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Natus dolores dolorum, eos officia quidem reiciendis ipsum laudantium laborum cupiditate distinctio vel dolor, rerum fugit quo nobis sed beatae sunt exercitationem.",
+        "Image": "./Images/art studio.jpg",
+        "Media": null
+    },
+    "2": {
+        "Name": "Street installation",
+        "Location": "River",
+        "Tagline": null,
+        "Description": "A series of sculptures and street art",
+        "Image": null,
+        "Media": null
+    }
+}
