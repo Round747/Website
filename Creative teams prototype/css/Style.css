@@ -197,6 +197,8 @@ hr {
     /* height: 150vh; */
     pointer-events: all;
     -webkit-overflow-scrolling: touch;
+    min-width: 1330px;
+    min-height: 1330px;
 }
 
 #Media {
@@ -232,6 +234,7 @@ hr {
     height: 100%;
 
 }
+
 
 
 
