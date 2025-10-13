@@ -187,7 +187,7 @@ hr {
 #Map-holder {
     width: 100vw;
     height: 100vh;
-    overflow-x: scroll;
+    /*overflow-x: scroll;*/
     overflow-y: scroll;
     pointer-events: none;
     -webkit-overflow-scrolling: touch;
@@ -196,6 +196,7 @@ hr {
 #Map {
     /* height: 150vh; */
     pointer-events: all;
+    -webkit-overflow-scrolling: touch;
 }
 
 #Media {
@@ -231,5 +232,6 @@ hr {
     height: 100%;
 
 }
+
 
 
