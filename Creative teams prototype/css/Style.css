@@ -187,7 +187,8 @@ hr {
 #Map-holder {
     width: 100vw;
     height: 100vh;
-    overflow: scroll scroll;
+    overflow-x: scroll;
+    overflow-y: scroll;
     pointer-events: none;
 }
 
@@ -229,3 +230,4 @@ hr {
     height: 100%;
 
 }
+
