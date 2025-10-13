@@ -190,6 +190,7 @@ hr {
     overflow-x: scroll;
     overflow-y: scroll;
     pointer-events: none;
+    -webkit-overflow-scrolling: touch;
 }
 
 #Map {
@@ -230,4 +231,5 @@ hr {
     height: 100%;
 
 }
+
 
