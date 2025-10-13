@@ -1,0 +1,43 @@
+{
+    "P01": {
+        "Name": "Parramatta Artists Studio",
+        "Location": "City",
+        "Outdoor": "Indoor",
+        "Tagline": "Short tagline goes here",
+        "Description": "Open to the public with classes and exhibits. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus dolores dolorum, eos officia quidem reiciendis ipsum laudantium laborum cupiditate distinctio vel dolor, rerum fugit quo nobis sed beatae sunt exercitationem.\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Natus dolores dolorum, eos officia quidem reiciendis ipsum laudantium laborum cupiditate distinctio vel dolor, rerum fugit quo nobis sed beatae sunt exercitationem.",
+        "Image": "Images/art studio.jpg",
+        "Media": [
+            "Images/art studio.jpg",
+            "Images/art studio.jpg"
+        ],
+        "Icons": [
+            "Food allowed",
+            "Wheelchair accessible",
+            "Toilets"
+        ],
+        "Backend": {
+            "Phone": "123 456 789",
+            "Email": "email@email.com"
+        }
+    },
+    "P02": {
+        "Name": "<i>You Are Here</i>",
+        "Location": "River",
+        "Outdoor": "Outdoor",
+        "Tagline": "Sculptures by the river",
+        "Description": "A series of sculptures and street art. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus dolores dolorum, eos officia quidem reiciendis ipsum laudantium laborum cupiditate distinctio vel dolor, rerum fugit quo nobis sed beatae sunt exercitationem.\n\nLorem ipsum dolor sit, amet consectetur adipisicing elit. Natus dolores dolorum, eos officia quidem reiciendis ipsum laudantium laborum cupiditate distinctio vel dolor, rerum fugit quo nobis sed beatae sunt exercitationem.",
+        "Image": "Images/You-are-here.jpg",
+        "Media": [
+            "Images/You-are-here.jpg",
+            "Images/You-are-here.jpg"
+        ],
+        "Icons": [
+            "Food allowed",
+            "Dog friendly"
+        ],
+        "Backend": {
+            "Phone": "123 456 789",
+            "Email": "email@email.com"
+        }
+    }
+}

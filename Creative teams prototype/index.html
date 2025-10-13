@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="css/Style.css">
+</head>
+
+<body>
+    <div id="Splash" class="Visible Splash-screen" style="z-index: 3;">
+        <p>Art Trail</p>
+        <button onclick="hide('#Splash')">-></button>
+    </div>
+    <div id="welcome" class="Visible Splash-screen" style="z-index: 2;">
+        <p>Welcome, please choose a language</p>
+        <button onclick="hide('#welcome')">English</button>
+        <button onclick="hide('#welcome')">Spanish</button>
+
+    </div>
+    <div id="login" class="Visible Splash-screen" style="z-index: 1;">
+        <p>Don't have an account? Sign up here:</p>
+
+        <a href="profile.html"><button>Sign up</button></a>
+        <p>Or login:</p>
+        <a href="profile.html"><button>Log in</button></a>
+    </div>
+
+</body>
+
+<script>
+    function hide(element) {
+        document.querySelector(element).classList.add("Invisible");
+        document.querySelector(element).classList.remove("Visible");
+    }
+</script>
+
+</html>

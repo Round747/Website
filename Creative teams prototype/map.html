@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map</title>
+    <link rel="stylesheet" href="css/Style.css">
+</head>
+
+<body>
+    <div id="Map-holder">
+        <img src="Images/Map.png" id="Map" usemap="#Image-map">
+    </div>
+
+    <map name="Image-map">
+        <area shape="circle" coords="500,641,40" onclick="DisplayPopup('P01')">
+        <area shape="circle" coords="937,509,40" onclick="DisplayPopup('P02')">
+    </map>
+
+    <div id="Header-holder" class="isHidden">
+        <div id="Popup-header" class="noShadow">
+            <p id="Name"></p>
+            <button id="Popup-close" onclick="HidePopup()">X</button>
+        </div>
+    </div>
+
+    <div id="Popup-box" class="isHidden">
+        <div id="Bar">
+            <ul id="Icons">
+            </ul>
+        </div>
+
+        <img id="Image" src="">
+        <div id="Content">
+            <p id="Tagline"></p>
+            <hr>
+            <p id="Location">Location:</p>
+            <p id="Outdoor"></p>
+            <hr>
+            <p id="Description"></p>
+
+        </div>
+        <p class="Header">Gallery</p>
+        <ul id="Media"></ul>
+
+    </div>
+
+    <div id="Menu-bar">
+        <ul>
+            <li><a href="profile.html"> <i class="fas fa-user"></i></a></li>
+            <li><a href="map.html"><i class="fas fa-map"></i></a></li>
+            <li><a href=""><i class="fas fa-ellipsis-h"></i></a></li>
+        </ul>
+    </div>
+</body>
+
+
+<script>
+    // fetches json file and fills out data in popup box
+    var JsonData = null;
+
+    GetFile();
+
+    async function GetFile() {
+        const requestURL = "./Data.json";
+        const request = new Request(requestURL);
+
+        const response = await fetch(request);
+        const Data = await response.json();
+        JsonData = Data;
+    }
+
+    function DisplayPopup(data) {
+
+        document.querySelector("#Popup-box").scrollTop = 0;
+        document.querySelector("#Popup-box").className = ""; // remove the "isHidden" class
+        document.querySelector("#Header-holder").className = ""; // remove the "isHidden" class
+
+        var Data = JsonData[data];
+        document.querySelector("#Name").innerHTML = Data["Name"];
+        document.querySelector("#Image").src = Data["Image"];
+        document.querySelector("#Tagline").textContent = Data["Tagline"];
+        document.querySelector("#Description").textContent = Data["Description"];
+        document.querySelector("#Location").textContent = "Location: " + Data["Location"];
+        document.querySelector("#Outdoor").textContent = Data["Outdoor"];
+
+
+        // add icons
+        document.querySelector("#Icons").innerHTML = ""; // remove all children
+        if (Data["Icons"].includes("Dog friendly")) CreateIcon("fas fa-dog");
+        if (Data["Icons"].includes("Food allowed")) CreateIcon("fas fa-hamburger");
+        if (Data["Icons"].includes("Wheelchair accessible")) CreateIcon("fas fa-wheelchair");
+        if (Data["Icons"].includes("Toilets")) CreateIcon("fas fa-restroom");
+
+        document.querySelector("#Media").innerHTML = ""; // remove all children
+        Data["Media"].forEach(element => {
+            fileType = element.substring(element.length - 3, element.length);
+
+
+            if (fileType == "jpg" || fileType == "png") CreateMedia(element, "img");
+            else CreateMedia(element, "video");
+
+
+        });
+    }
+
+    function CreateIcon(code) {
+        Li = document.createElement("li");
+        Icon = document.createElement("i");
+        Icon.className = code;
+        Li.appendChild(Icon);
+        document.querySelector("#Icons").appendChild(Li);
+    }
+
+    function CreateMedia(path, type) {
+        Li = document.createElement("li");
+        Img = document.createElement(type);
+        Img.src = path;
+        Li.appendChild(Img);
+        document.querySelector("#Media").appendChild(Li);
+    }
+
+    function HidePopup() {
+        document.querySelector("#Popup-box").className = "isHidden";
+        document.querySelector("#Header-holder").className = "isHidden";
+    }
+
+</script>
+
+
+<script>
+    //makes shadow appear when the popup box is scrolled
+    const box = document.querySelector("#Popup-box");
+
+    box.addEventListener("scroll", (event) => {
+        if (box.scrollTop == 0) {
+            document.querySelector("#Popup-header").classList.add("noShadow");
+            document.querySelector("#Popup-header").classList.remove("shadow");
+        }
+        else {
+            document.querySelector("#Popup-header").classList.remove("noShadow");
+            document.querySelector("#Popup-header").classList.add("shadow");
+        }
+
+    });
+</script>
+
+</html>
