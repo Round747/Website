@@ -191,6 +191,7 @@ hr {
     overflow-y: scroll;
     pointer-events: none;
     -webkit-overflow-scrolling: touch;
+    touch-action: manipulation;
 }
 
 #Map {
@@ -199,6 +200,7 @@ hr {
     -webkit-overflow-scrolling: touch;
     min-width: 1330px;
     min-height: 1330px;
+    touch-action: manipulation;
 }
 
 #Media {
@@ -234,6 +236,7 @@ hr {
     height: 100%;
 
 }
+
 
 
 
