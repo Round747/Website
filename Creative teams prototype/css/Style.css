@@ -185,13 +185,14 @@ hr {
 }
 
 #Map-holder {
-    width: 100%;
+    width: fit-content;
     height: 100%;
     /*overflow-x: scroll;*/
     overflow-y: scroll;
     pointer-events: none;
     -webkit-overflow-scrolling: touch;
     touch-action: manipulation;
+    white-space: nowrap;
 }
 
 #Map {
@@ -236,6 +237,7 @@ hr {
     height: 100%;
 
 }
+
 
 
 
