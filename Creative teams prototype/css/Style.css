@@ -198,8 +198,8 @@ hr {
     /* height: 150vh; */
     pointer-events: all;
     -webkit-overflow-scrolling: touch;
-    /*min-width: 1330px;
-    min-height: 1330px;*/
+    min-width: 1330px;
+    min-height: 1330px;
     touch-action: manipulation;
 }
 
@@ -236,6 +236,7 @@ hr {
     height: 100%;
 
 }
+
 
 
 
