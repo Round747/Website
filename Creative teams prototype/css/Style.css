@@ -176,12 +176,12 @@ hr {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 350%;
+    height: 100%;
 }
 
 #Menu-bar ul li {
     display: inline-block;
-    font-size: 2em;
+    font-size: 350%;
 }
 
 #Map-holder {
