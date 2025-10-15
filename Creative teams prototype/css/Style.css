@@ -164,7 +164,7 @@ hr {
     list-style-type: none;
     background-color: white;
     position: fixed;
-    width: 100%;
+    width: 100vw;
     height: 5em;
     bottom: 0;
     z-index: 0;
@@ -184,8 +184,13 @@ hr {
     font-size: 2em;
 }
 
+html {
+    overflow-x: scroll;
+}
+
 #Map-holder {
-    width: fit-content;
+    /* width: fit-content; */
+    width: 100%;
     height: 100%;
     /*overflow-x: scroll;*/
     overflow-y: scroll;
@@ -237,12 +242,3 @@ hr {
     height: 100%;
 
 }
-
-
-
-
-
-
-
-
-
