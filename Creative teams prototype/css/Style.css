@@ -170,25 +170,22 @@ hr {
     z-index: 0;
 }
 
-
-
 #Menu-bar ul {
     padding-left: 0;
     margin: 0;
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 100%;
+    height: 350%;
 }
 
 #Menu-bar ul li {
     display: inline-block;
-    font-size: 350%;
+    font-size: 2em;
 }
 
 #Map-holder {
     width: fit-content;
-    /* width: 100%; */
     height: 100%;
     /*overflow-x: scroll;*/
     overflow-y: scroll;
