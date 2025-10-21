@@ -335,11 +335,14 @@ li p {
 }
 
 #pfp {
-    height: 8em;
-    width: 8em;
-    border-radius: 6em;
+    width: 30%;
+    border-radius: 50%;
+    height: 30%;
     background-color: white;
     display: inline-block;
+    margin: 1em;
+    margin-top: 0;
+    margin-left: 0;
 }
 
 #header {
