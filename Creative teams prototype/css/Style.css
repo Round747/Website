@@ -138,6 +138,12 @@ hr {
     color: gray;
 }
 
+.List-Tagline {
+    max-width: 70%;
+    overflow-y: hidden;
+    max-height: 70%;
+}
+
 #Description {
     white-space: pre-line;
 }
@@ -280,6 +286,8 @@ hr {
 #List {
     padding: 1em;
     margin-top: 0;
+    overflow: scroll;
+    margin-bottom: 5em;
 }
 
 #List li {
