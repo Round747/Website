@@ -41,7 +41,7 @@
         }
     },
     "P03": {
-        "Name": " Ripple effect, 2022",
+        "Name": "Ripple effect, 2022",
         "Location": "PHIVE, 5 Parramatta Square, Parramatta NSW 2150",
         "Outdoor": "Indoor",
         "Tagline": "Discover Ripple effect, a public artwork in Parramatta celebrating connection to Country, water, shared histories and community stories",
@@ -56,6 +56,27 @@
         "Icons": [
             "Food allowed",
             "Dog friendly",
+            "Toilets",
+            "Wheelchair accessible"
+        ],
+        "Backend": {
+            "Phone": "123 456 789",
+            "Email": "email@email.com"
+        }
+    },
+    "P04": {
+        "Name": "Bare Skills",
+        "Location": "PAS Granville, 4 Bridge St, Granville NSW 2142",
+        "Outdoor": "Indoor",
+        "Tagline": " Bare Skills is a new series of art and survival workshops for young people aged 14 to 25, developed by Parramatta Artists Studios and hosted every second month at PAS Granville.",
+        "Description": "Bringing together experts and knowledge holders in climate resilience, land-based traditions and apocalyptic aesthetics, Bare Skills participants learn how they can use their creativity to survive in the face of existential crisis. Inspired by consultation with Parramatta youth, this new program aims to redefine learning and creative experiences for young people led by young people. Bare Skills is a safe and supportive space that encourages skill-sharing, truth-telling, intergenerational solidarity, and expansive definitions of creativity – or what it means to be an artist at the end of the world.",
+        "Image": "Images/Picture6.jpg",
+        "Media": [
+            "Images/Picture7.jpg",
+            "Images/Picture8.jpg",
+            "Images/Picture9.jpg"
+        ],
+        "Icons": [
             "Toilets",
             "Wheelchair accessible"
         ],
