@@ -314,3 +314,36 @@ li p {
     background-color: white;
     padding: 1em;
 }
+
+#body p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.right {
+
+    background-color: white;
+    padding: 1em;
+    width: 60%;
+    display: inline-block;
+    margin: 1em;
+    margin-right: 0;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+
+}
+
+#pfp {
+    height: 8em;
+    width: 8em;
+    border-radius: 6em;
+    background-color: white;
+    display: inline-block;
+}
+
+#header {
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
+}
