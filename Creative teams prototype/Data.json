@@ -39,5 +39,29 @@
             "Phone": "123 456 789",
             "Email": "email@email.com"
         }
+    },
+    "P03": {
+        "Name": " Ripple effect, 2022",
+        "Location": "PHIVE, 5 Parramatta Square, Parramatta NSW 2150",
+        "Outdoor": "Indoor",
+        "Tagline": "Discover Ripple effect, a public artwork in Parramatta celebrating connection to Country, water, shared histories and community stories",
+        "Description": "Water is essential to life, and human history tells us that thriving civilisations are born around the riverbanks. The artist Syed’s affinity for water resonates with the history of the first known residents along the Indus River in Sindh, Pakistan, specifically the Mohenjo-Daro (part of a larger culture known as the Harappans), as well as with the Parramatta River and its waterways, its Indigenous people, and the evolving culture.",
+        "Image": "Images/Picture1.jpg",
+        "Media": [
+            "Images/Picture2.jpg",
+            "Images/Picture3.jpg",
+            "Images/Picture4.jpg",
+            "Images/Picture5.jpg"
+        ],
+        "Icons": [
+            "Food allowed",
+            "Dog friendly",
+            "Toilets",
+            "Wheelchair accessible"
+        ],
+        "Backend": {
+            "Phone": "123 456 789",
+            "Email": "email@email.com"
+        }
     }
 }

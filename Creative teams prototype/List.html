@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css/Style.css">
+
+</head>
+
+<body>
+    <div style="padding: 1em; padding-bottom: 0;">
+        <h1>All locations</h1>
+        <button onclick="Open()"><i class="fas fa-filter"></i></button>
+    </div>
+
+    <ul id="Filter" class="Closed">
+        <li>
+            <p>Wheelchair accessible</p><input type="checkbox" class="checkbox">
+        </li>
+        <li>
+            <p>Food allowed</p><input type="checkbox" class="checkbox">
+        </li>
+
+
+
+    </ul>
+    <ul id="List">
+
+    </ul>
+
+    <div id="Menu-bar">
+        <ul>
+            <li><a href="profile.html"> <i class="fas fa-user"></i></a></li>
+            <li><a href="map.html"><i class="fas fa-map"></i></a></li>
+            <li><a href=""><i class="fas fa-ellipsis-h"></i></a></li>
+        </ul>
+    </div>
+
+</body>
+
+<script>
+    var open = false;
+
+    var JsonData = null;
+
+    GetFile();
+
+
+
+    async function GetFile() {
+        const requestURL = "./Data.json";
+        const request = new Request(requestURL);
+
+        const response = await fetch(request);
+        const Data = await response.json();
+        JsonData = Data;
+        BuildList();
+    }
+
+    function Open() {
+        if (!open) {
+            document.querySelector("#Filter").classList.add("Open");
+            document.querySelector("#Filter").classList.remove("Closed");
+        }
+        else {
+            document.querySelector("#Filter").classList.remove("Open");
+            document.querySelector("#Filter").classList.add("Closed");
+        }
+
+        open = !open;
+    }
+
+    function BuildList() {
+
+
+        Object.keys(JsonData).forEach(function (key) {
+
+            Current = JsonData[key];
+
+            Li = document.createElement("li");
+
+            Img = document.createElement("img");
+
+            Img.src = Current["Image"];
+
+            Li.appendChild(Img);
+
+            Title = document.createElement("p");
+
+            Title.textContent = Current["Name"];
+
+            Title.classList.add("List-Name");
+
+            Li.appendChild(Title);
+
+            Tag = document.createElement("p");
+
+            Tag.innerHTML = Current["Tagline"];
+
+            Tag.classList.add("List-Tagline");
+
+            Li.appendChild(Tag);
+
+            document.querySelector("#List").appendChild(Li);
+
+
+
+        });
+
+    }
+
+</script>
+
+</html>
