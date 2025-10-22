@@ -123,6 +123,9 @@ hr {
 #Bar {
     margin-top: 3.5em;
     padding: 1em;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 #Icons {
@@ -185,7 +188,7 @@ hr {
 
 }
 
-.Splash-screen img {
+#Culture-Crave {
     width: 100%;
     display: block;
     justify-self: center;
@@ -199,9 +202,15 @@ hr {
     border: none;
     border-radius: 1.5em;
     font-family: Helvetica, Arial, sans-serif;
+    color: black;
 }
 
-.Splash-screen button {}
+#Share {
+    display: inline-block;
+    color: black;
+    font-size: 1.3em;
+    /* padding-right: 0.75em; */
+}
 
 .space {
     margin-top: 5em;
@@ -221,6 +230,39 @@ hr {
     height: 5em;
     bottom: 0;
     z-index: 0;
+}
+
+#Burger-Menu {
+    position: fixed;
+    bottom: 5em;
+    width: 100%;
+    background-color: #f6e7cb;
+    padding-left: 1em;
+    border-bottom: solid 1px #f6e7cb;
+
+}
+
+#Burger-Menu.Open {
+    height: 3.5em;
+    transition: all 0.4s;
+    padding: 1em;
+    border-bottom: solid 1px #dd9787;
+
+}
+
+#Burger-Menu.Closed {
+    height: 0em;
+    transition: all 0.4s;
+
+}
+
+#Burger-Menu a {
+    display: inline-block;
+    margin-right: 1em;
+    font-family: Helvetica, Arial, sans-serif;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.3em;
 }
 
 #Menu-bar ul {

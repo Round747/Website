@@ -29,6 +29,7 @@
         <div id="Bar">
             <ul id="Icons">
             </ul>
+            <i class="fas fa-share-square" id="Share"></i>
         </div>
 
         <img id="Image" src="">
@@ -46,11 +47,18 @@
 
     </div>
 
+    <div id="Burger-Menu" class="Closed">
+        <a href="List.html">List</a>
+        <a href="#">About</a>
+        <a href="Home.html">Home</a>
+        <a href="Contact.html">Contact</a>
+
+    </div>
     <div id="Menu-bar">
         <ul>
             <li><a href="profile.html"> <i class="fas fa-user"></i></a></li>
             <li><a href="map.html"><i class="fas fa-map"></i></a></li>
-            <li><a href="List.html"><i class="fas fa-ellipsis-h"></i></a></li>
+            <li><a onclick="(Burger())"><i class="fas fa-bars"></i></a></li>
         </ul>
     </div>
 </body>
@@ -59,6 +67,22 @@
 <script>
     // fetches json file and fills out data in popup box
     var JsonData = null;
+
+    var open = false;
+
+    function Burger() {
+        open = !open;
+
+        if (open) {
+            document.querySelector("#Burger-Menu").classList.add("Open");
+            document.querySelector("#Burger-Menu").classList.remove("Closed");
+
+        }
+        else {
+            document.querySelector("#Burger-Menu").classList.add("Closed");
+            document.querySelector("#Burger-Menu").classList.remove("Open");
+        }
+    }
 
     GetFile();
 

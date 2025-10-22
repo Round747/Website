@@ -12,7 +12,7 @@
 <body>
     <div style="padding: 1em; padding-bottom: 1em; background-color: #f6e7cb;">
         <h1>All locations</h1>
-        <button onclick="Open()" class="button"><i class="fas fa-filter"></i></button>
+        <button onclick="Open()" class="button"><i class="fas fa-filter" id="Share"></i></button>
     </div>
 
     <ul id="Filter" class="Closed">
@@ -20,10 +20,13 @@
             <p>Wheelchair accessible</p><input type="checkbox" class="checkbox">
         </li>
         <li>
-            <p>Food allowed</p><input type="checkbox" class="checkbox">
+            <p>Studios</p><input type="checkbox" class="checkbox">
         </li>
         <li>
-            <p>Kid Friendly</p><input type="checkbox" class="checkbox">
+            <p>Live Music</p><input type="checkbox" class="checkbox">
+        </li>
+        <li>
+            <p>Galleries</p><input type="checkbox" class="checkbox">
         </li>
         <li>
             <p>Toilets</p><input type="checkbox" class="checkbox">
@@ -35,12 +38,18 @@
     <ul id="List">
 
     </ul>
+    <div id="Burger-Menu" class="Closed">
+        <a href="List.html">List</a>
+        <a href="#">About</a>
+        <a href="Home.html">Home</a>
+        <a href="Contact.html">Contact</a>
 
+    </div>
     <div id="Menu-bar">
         <ul>
             <li><a href="profile.html"> <i class="fas fa-user"></i></a></li>
             <li><a href="map.html"><i class="fas fa-map"></i></a></li>
-            <li><a href="List.html"><i class="fas fa-ellipsis-h"></i></a></li>
+            <li><a onclick="(Burger())"><i class="fas fa-bars"></i></a></li>
         </ul>
     </div>
 
@@ -53,7 +62,21 @@
 
     GetFile();
 
+    var open = false;
 
+    function Burger() {
+        open = !open;
+
+        if (open) {
+            document.querySelector("#Burger-Menu").classList.add("Open");
+            document.querySelector("#Burger-Menu").classList.remove("Closed");
+
+        }
+        else {
+            document.querySelector("#Burger-Menu").classList.add("Closed");
+            document.querySelector("#Burger-Menu").classList.remove("Open");
+        }
+    }
 
     async function GetFile() {
         const requestURL = "./Data.json";
