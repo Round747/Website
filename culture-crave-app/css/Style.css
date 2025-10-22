@@ -186,9 +186,10 @@ hr {
 }
 
 .Splash-screen img {
-    width: 80%;
+    width: 100%;
     display: block;
     justify-self: center;
+    padding: 3em;
 }
 
 .button {
