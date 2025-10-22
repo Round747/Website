@@ -185,6 +185,12 @@ hr {
 
 }
 
+.Splash-screen img {
+    width: 80%;
+    display: block;
+    justify-self: center;
+}
+
 .button {
     height: 3em;
     min-width: 5em;
