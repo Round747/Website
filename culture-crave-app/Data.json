@@ -21,7 +21,7 @@
         }
     },
     "P02": {
-        "Name": "<i>You Are Here</i>",
+        "Name": "You Are Here",
         "Location": "River",
         "Outdoor": "Outdoor",
         "Tagline": "Sculptures by the river",

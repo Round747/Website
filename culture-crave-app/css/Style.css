@@ -24,11 +24,11 @@ a:active {
 html,
 body {
     margin: 0;
-    background-color: lightgrey;
+    background-color: #dacaac;
 }
 
 hr {
-    background-color: lightgray;
+    background-color: #dd9787;
     border: 0;
     height: 1px;
     border-color: transparent;
@@ -43,7 +43,7 @@ hr {
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
 
-    background-color: white;
+    background-color: #f6e7cb;
 
     transition: transform 0.5s, box-shadow 0.5s;
 
@@ -79,9 +79,10 @@ hr {
     /* height: 3em; */
     border-top-left-radius: 1em;
     border-top-right-radius: 1em;
-    background-color: white;
+    background-color: #f6e7cb;
+
     padding: 1em;
-    border-bottom: solid 1px lightgrey;
+    border-bottom: solid 1px #dd9787;
     pointer-events: all;
     transition: all 0.25s;
 }
@@ -101,6 +102,7 @@ hr {
     font-weight: bold;
     font-size: 1.25em;
     color: black;
+    font-family: Helvetica, Arial, sans-serif;
 
 }
 
@@ -115,6 +117,7 @@ hr {
     font-weight: bold;
     font-size: 1.5em;
     margin-bottom: 0;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 #Bar {
@@ -131,7 +134,7 @@ hr {
 
 #Icons li {
     display: inline-block;
-    color: rgb(170, 170, 170);
+    color: #dd9787;
     font-size: 1.3em;
     padding-right: 0.75em;
 }
@@ -144,7 +147,7 @@ hr {
 .List-Tagline {
     margin-top: 0;
     font-style: italic;
-    color: gray;
+    color: #dd9787;
 }
 
 .List-Tagline {
@@ -176,14 +179,36 @@ hr {
     position: fixed;
     width: 100vw;
     height: 100vh;
-    background-color: white;
+    background-color: #f6e7cb;
     text-align: center;
     align-content: center;
+
+}
+
+.button {
+    height: 3em;
+    min-width: 5em;
+    background-color: #a6c48a;
+    border: none;
+    border-radius: 1.5em;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+.Splash-screen button {}
+
+.space {
+    margin-top: 5em;
+    margin-bottom: 5em;
+}
+
+.Splash-screen p {
+    font-weight: bold;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 #Menu-bar {
     list-style-type: none;
-    background-color: white;
+    background-color: #f6e7cb;
     position: fixed;
     width: 100%;
     height: 5em;
@@ -203,6 +228,10 @@ hr {
 #Menu-bar ul li {
     display: inline-block;
     font-size: 2em;
+}
+
+#Menu-bar i {
+    color: #a35e4e;
 }
 
 #Map-holder {
@@ -244,8 +273,10 @@ hr {
     font-size: 1.3em;
     margin-left: 0.7em;
     font-weight: bold;
-    color: gray;
+    color: #dd9787;
     margin-top: 0;
+    font-family: Helvetica, Arial, sans-serif;
+
 }
 
 #Media li {
@@ -260,11 +291,26 @@ hr {
 }
 
 #Filter {
-    background-color: white;
+    background-color: #a6c48a;
     overflow-x: hidden;
     overflow-y: hidden;
     padding: 1em;
+    margin-top: 0;
     margin-bottom: 0;
+    /* border-radius: 1em; */
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+
+}
+
+input[type="checkbox"] {
+    accent-color: #f6e7cb;
+    border: none;
+}
+
+input[type="checkbox"]::before {
+    accent-color: #f6e7cb;
+    border: none;
 }
 
 #Filter.Closed {
@@ -280,7 +326,6 @@ hr {
     transition: all 0.5s;
     /* min-height: ; */
     /* display: flex; */
-
 }
 
 #Filter li {
@@ -308,10 +353,10 @@ hr {
     list-style-type: none;
     display: block;
     height: 6em;
-    background-color: white;
+    background-color: #f6e7cb;
     padding: 0.5em;
     margin-bottom: 1em;
-
+    border-radius: 0.5em;
 }
 
 #List li img {
@@ -333,7 +378,7 @@ li p {
 }
 
 #body {
-    background-color: white;
+    background-color: #f6e7cb;
     padding: 1em;
     border-radius: 1em;
 
@@ -346,7 +391,7 @@ li p {
 
 .right {
 
-    background-color: white;
+    background-color: #f6e7cb;
     padding: 1em;
     width: 60%;
     display: inline-block;

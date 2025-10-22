@@ -10,21 +10,28 @@
 
 <body>
     <div id="Splash" class="Visible Splash-screen" style="z-index: 3;">
-        <p>Culture Crave</p>
-        <button onclick="hide('#Splash')">-></button>
+        <img src="" alt="" title="Culture Crave">
+        <button onclick="hide('#Splash')" class="button"><i class="fas fa-arrow-right"></i></button>
     </div>
     <div id="welcome" class="Visible Splash-screen" style="z-index: 2;">
         <p>Welcome, please choose a language</p>
-        <button onclick="hide('#welcome')">English</button>
-        <button onclick="hide('#welcome')">Spanish</button>
+        <button onclick="hide('#welcome')" class="button">English</button>
+        <p></p>
+        <button onclick="hide('#welcome')" class="button">Spanish</button>
+        <p></p>
+
+        <button onclick="hide('#welcome')" class="button">Other</button>
+
 
     </div>
     <div id="login" class="Visible Splash-screen" style="z-index: 1;">
-        <p>Don't have an account? Sign up here:</p>
-
-        <a href="profile.html"><button>Sign up</button></a>
-        <p>Or login:</p>
-        <a href="profile.html"><button>Log in</button></a>
+        <p>Don't have an account? </p>
+        <div class="space">
+            <p>Sign up here:</p>
+            <a href="profile.html"><button class="button">Sign up</button></a>
+        </div>
+        <p></p>
+        <a href="profile.html"><button class="button">Or Log in</button></a>
     </div>
 
 </body>
