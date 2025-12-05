@@ -47,6 +47,26 @@
 
 /* force rebuild? */
 
+/* summary::marker {
+	cursor: pointer;
+} */
+
+details {
+	display: inline-block;
+}
+
+
+
+summary {
+	width: fit-content;
+}
+
+details summary {
+	cursor: pointer;
+}
+
+
+
 
 .button.large.Font-3,
 .button.Font-3 {
