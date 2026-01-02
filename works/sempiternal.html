@@ -77,19 +77,7 @@
 				<h1 class="pconly" id="play" style="text-align: center; margin-top: 5em; margin-bottom: 3em;"> <a
 						href="https://itch.io/embed-upload/15138735?color=000000"
 						style="cursor:pointer; font-size: 3.5em; " class="fas fa-play-circle"></a> <br><br> Play Game
-				</h1> <!--onclick="playgame()"-->
-				<div class="pconly">
-
-					<div id="holder" style="display: block; width: 720px; margin: auto;">
-						<iframe id="game" style="height: 100%; width: 100%; aspect-ratio: 720/548;" frameborder="0"
-							src="" width="720" height="548"><a href="https://round747.itch.io/sempiternal">Play
-								Sempiternal on itch.io</a></iframe>
-					</div>
-				</div>
-
-
-
-
+				</h1>
 
 				<p class="pconly" style="margin-bottom: 0.5em;"><b>CONTROLS</b> <br>
 				<table class="pconly" style="width: fit-content;">
@@ -183,23 +171,6 @@
 	<script src="/assets/js/breakpoints.min.js"></script>
 	<script src="/assets/js/util.js"></script>
 	<script src="/assets/js/main.js"></script>
-	<script>
-
-		var holder = document.querySelector("#holder");
-		var game = document.querySelector("#game");
-		var play = document.querySelector("#play");
-
-
-		holder.style.display = "none";
-
-		var link = "https://itch.io/embed-upload/12900948?color=000000";
-		function playgame() {
-			play.style.display = "none";
-			game.src = link;
-			holder.style.display = "block";
-
-		}
-	</script>
 
 
 
