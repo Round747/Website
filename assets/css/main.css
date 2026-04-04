@@ -174,7 +174,7 @@ details summary {
 	}
 
 	.pconly {
-		display: none;
+		display: none !important;
 
 	}
 
@@ -334,6 +334,8 @@ x {
 	right: 150%;
 	transition-property: visibility;
 	transition-delay: 0.1s;
+	background-color: white;
+
 }
 
 .tooltip .tooltiptextpost {
@@ -3329,6 +3331,18 @@ ul.posts article header .published {
 }
 
 ul.posts article header> :last-child {
+	margin-bottom: 0;
+}
+
+ul.posts header {
+	padding-right: 1.5em !important;
+}
+
+ul.posts header time {
+	display: inline-block !important;
+}
+
+ul.posts header h3 {
 	margin-bottom: 0;
 }
 
