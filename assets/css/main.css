@@ -45,6 +45,43 @@
 	margin-bottom: 1em;
 }
 
+#footer .svg-link{
+	filter: invert(75%) sepia(0%) saturate(61%) hue-rotate(184deg) brightness(92%) contrast(86%);
+}
+
+#footer .svg-link:hover{
+	filter: invert(32%) sepia(29%) saturate(1234%) hue-rotate(242deg) brightness(89%) contrast(89%);
+}
+
+#footer .svg-link img{
+	bottom: 40%;
+}
+
+.svg-link{
+	position: relative;
+	filter: invert(34%) sepia(37%) saturate(0%) hue-rotate(263deg) brightness(102%) contrast(87%);
+	transition: filter 0.2s ease;
+	display: inline-block;
+	width: 0.95em;
+	height: 0.95em;
+	vertical-align: middle;
+}
+
+.svg-link img{
+	width: 100%;
+	height: 100%;
+	position: relative;
+	bottom: 60%;
+}
+
+ul.icons{
+	height: 100%;
+}
+
+.svg-link:hover{
+	filter: invert(32%) sepia(29%) saturate(1234%) hue-rotate(242deg) brightness(89%) contrast(89%);
+}
+
 /* force rebuild? */
 
 /* summary::marker {
@@ -806,6 +843,13 @@ textarea {
 		font-size: 12pt;
 	}
 
+	
+
+	.svg-link img{
+		
+		bottom: 100%;
+	}
+
 }
 
 @media screen and (max-width: 736px) {
@@ -815,6 +859,11 @@ textarea {
 	select,
 	textarea {
 		font-size: 12pt;
+	}
+
+	.svg-link img{
+		
+		bottom: 70%;
 	}
 
 }
@@ -3233,7 +3282,7 @@ ul.icons {
 
 ul.icons li {
 	display: inline-block;
-	padding: 0 1em 0 0;
+	padding: 0 0.7em 0 0;
 }
 
 ul.icons li:last-child {
@@ -3258,6 +3307,8 @@ ul.icons li {
 	#header ul.icons li {
 		font-size: 1.65em;
 	}
+
+	
 }
 
 
